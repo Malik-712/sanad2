@@ -179,3 +179,51 @@ incomplete instead of being drawn under the Prophet.
 - Checked with an interactive Playwright script: 17 checks (search, filters,
   deep-link restore, compare, full screen, PNG, share, minimap, mobile
   overflow), no page errors.
+
+---
+
+## Phase 4 — Dorar (الدرر السنية) (2026-09-28)
+
+### Access investigation (done first)
+| check | result |
+|---|---|
+| `https://dorar.net/robots.txt` | `User-agent: * / Disallow:` (nothing disallowed) |
+| Official API | Yes: `https://dorar.net/dorar_api.json?skey=…`, published in article 389 («خدمة واجهة الموسوعة الحديثية API») for sites to show hadith-encyclopedia search results. Returns HTML inside JSON: text, الراوي، المحدث، المصدر، الصفحة أو الرقم، خلاصة حكم المحدث. |
+| Terms of use | No terms page found; the footer says «جميع الحقوق محفوظة لمؤسسة الدرر السنية». |
+| Narrator biographies | **No API.** Only HTML pages (`/hadith/tarajem`, «تراجم المحدثين»). The site serves Cloudflare's bot-challenge script, and a third-party wrapper project reports (issue #29, 2026-05) that Cloudflare protection stopped its scraping. |
+| Honest user agent | The API answers `Sanad/1.0 (…)` normally; no impersonation needed. |
+
+**Decision.** Grade attribution uses the official API only. **Narrator
+profiles from Dorar were stopped**, as instructed: automated access to
+biographies is not offered, the pages are all-rights-reserved and protected
+against bots, and Sanad does not work around that.
+
+### Built
+- `sanad_core/dorar.py`: official-API client. Identifies itself (`Sanad/1.0`),
+  15 s timeout, at least 2.5 s between requests (process-wide lock), parses
+  only the fields the API returns, verbatim. Cached: `data/dorar_grades.json.gz`
+  (committed, built by `pipeline/fetch_dorar_grades.py`) and a git-ignored
+  runtime cache. `SANAD_DORAR_LIVE=0` disables network access.
+- **Matching** a Dorar result to a narration: `same_source` (the book's own
+  entry, same number) → high; `same_text` (≥ 80 % of words in order, comparable
+  lengths) → high; anything weaker, a different number in the same book, or a
+  short excerpt → «غير مؤكد» with the numbers, never picked silently. Every
+  item stores confidence and the matching method.
+- **Hadith page:** «الحكم منسوبًا إلى قائله» shows each attribution with Dorar's
+  own labels (المحدث، المصدر، الصفحة أو الرقم، خلاصة حكم المحدث) and the verdict
+  verbatim, plus its provenance box and a link to the same search on Dorar.
+  Verdicts are not rewritten into «صححه فلان» (that would be a paraphrase).
+  The unattributed dataset grade moves into a collapsed note when attributed
+  grades exist.
+- **Narrator profile** (tree): only what the isnad texts show: the name as
+  written and its variants, teachers and students *within this tree* (read
+  from the chains, labelled as such), and every biographical field (full
+  name, kunya, nisba, birth, death, tabaqa, scholars' statements) as
+  «غير متوفر في المصدر» with the reason.
+- Prefetch: 56 queries (66 hadiths: the evaluation's existing texts, their
+  narrations and demo hadiths). One transient connection error mid-run; one
+  diagnostic request showed HTTP 200 and no Cloudflare mitigation, and the
+  run was resumed once. 63/66 hadiths have attributions, 48 with a
+  high-confidence match, 13 matched to the book's own entry and number.
+- `tests/test_dorar.py`: 8 offline tests (parser on a real two-result API
+  response, attribution, confidence rules, policy constants).

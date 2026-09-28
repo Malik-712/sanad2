@@ -2,7 +2,7 @@
 
    State lives in the URL (?comp=&books=&sahih=1&short=1&sim=&mudar=0&focus=&cmp=),
    so every view of the tree can be shared as a link. */
-import { esc, $, $$, api, ICON, fmtPct, chainRow, toast } from "./ui.js";
+import { esc, $, $$, api, ICON, fmtPct, chainRow, toast, provBox, missing, MISSING } from "./ui.js";
 
 const cssVar = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const SAHIHAYN = ["bukhari", "muslim"];
@@ -358,11 +358,33 @@ export async function treePage(app, id) {
       ${n.variants.length ? `<p class="meter">ورد أيضًا بصيغة: ${n.variants.map(esc).join("، ")}</p>` : ""}
       <p style="margin-top:8px">${through.length === 1 ? "يمر به طريق واحد ظاهر" : `يمر به ${through.length} طرق ظاهرة`}:</p>
       <ul>${through.slice(0, 40).map((c) => `<li><a href="/h/${esc(c.hid)}" data-link>${esc(routeName(c))}</a> <span class="meter">تشابه ${fmtPct(c.similarity)}</span></li>`).join("")}</ul>
-      ${n.kind === "narrator" || n.kind === "companion" ? `<p class="meter">لا نعرض ترجمة للراوي: لا يتيح مصدر موثوق وصولًا آليًا مسموحًا به إلى التراجم. <a href="/about/sources" data-link>التفاصيل</a>.</p>` : ""}
+      ${n.kind === "narrator" || n.kind === "companion" ? profile(n) : ""}
       <div class="row"><button class="btn ghost small" type="button" id="unfocus">إظهار كل الطرق</button></div>`;
     $("#unfocus").addEventListener("click", () => { clearFocus(); writeState(); });
     writeState();
   }
+  /** What Sanad can say about a narrator: only what the isnad texts show. */
+  function profile(n) {
+    const list = (xs) => (xs.length ? xs.map(esc).join("، ") : missing());
+    const BIO = ["الاسم الكامل", "الكنية", "النسبة", "المولد (هجري)", "الوفاة (هجري)", "الطبقة", "أقوال العلماء فيه"];
+    return `<div class="profile">
+      <h4>ما نعرفه عن هذا الراوي</h4>
+      <dl class="facts">
+        <dt>الاسم كما ورد</dt><dd>${esc(n.label)}${n.variants.length ? ` <span class="meter">(ويرد: ${n.variants.map(esc).join("، ")})</span>` : ""}</dd>
+      </dl>${provBox(n.prov)}
+      <dl class="facts">
+        <dt>شيوخه في هذه الشجرة</dt><dd>${n.kind === "companion" ? "النبي ﷺ" : list(n.teachers)}</dd>
+        <dt>تلاميذه في هذه الشجرة</dt><dd>${list(n.students)}</dd>
+        ${n.compilers.length ? `<dt>روى عنه من المصنّفين</dt><dd>${list(n.compilers)}</dd>` : ""}
+      </dl>${provBox(n.relations_prov)}
+      <dl class="facts">${BIO.map((f) => `<dt>${f}</dt><dd>${missing()}</dd>`).join("")}</dl>
+      <details class="prov"><summary>كيف حصلنا على هذه المعلومة؟</summary><dl>
+        <dt>المصدر</dt><dd>${MISSING}</dd>
+        <dt>السبب</dt><dd>تراجم الرواة في الدرر السنية لا تُتاح عبر واجهتها الرسمية، وصفحاتها محفوظة الحقوق ومحمية من الوصول الآلي، فلم نجلبها. ولا يملأ سند هذه الحقول من عنده.</dd>
+        <dt>التفاصيل</dt><dd><a href="/about/sources" data-link>صفحة المصادر</a></dd></dl></details>
+    </div>`;
+  }
+
   if (cy) {
     cy.on("tap", "node", (ev) => focusNode(ev.target.id(), { center: false }));
     cy.on("tap", (ev) => { if (ev.target === cy) { clearFocus(); writeState(); } });

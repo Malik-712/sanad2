@@ -5,6 +5,7 @@ GET /api/sanad?action=hadith&id=bukhari-1
 GET /api/sanad?action=tree&id=bukhari-1
 GET /api/sanad?action=diff&id=bukhari-1&q=...
 GET /api/sanad?action=compare&a=bukhari-1&b=muslim-4927   (wording of two narrations)
+GET /api/sanad?action=grades&id=bukhari-1      (Dorar attributions, official API, cached)
 GET /api/sanad?action=health
 """
 import json
@@ -49,7 +50,7 @@ def route(params):
         if book and book not in BOOKS:
             return 400, {"error": "اسم الكتاب غير معروف."}
         return 200, engine.search(q, limit=10, book=book, mode=mode)
-    if action in ("hadith", "tree", "diff"):
+    if action in ("hadith", "tree", "diff", "grades"):
         hid = _id(params)
         if not hid:
             return 400, {"error": "رقم الحديث غير صالح."}
@@ -59,6 +60,10 @@ def route(params):
         if action == "tree":
             t = engine.tree(hid)
             return (200, t) if t else (404, {"error": NOT_FOUND})
+        if action == "grades":
+            from sanad_core import dorar
+            g = dorar.grades_for(hid)
+            return (200, g) if g is not None else (404, {"error": NOT_FOUND})
         if action == "diff":
             h = engine.hadith(hid)
             if not h:
@@ -103,7 +108,8 @@ class handler(BaseHTTPRequestHandler):
             status, body = route(params)
         except Exception as exc:  # never leak a stack trace to the page
             status, body = 500, {"error": "حدث خطأ في الخادم.", "detail": type(exc).__name__}
-        respond(self, status, body)
+        # a "grades" answer can change once Dorar has been queried: cache briefly
+        respond(self, status, body, cache=not (params.get("action") == "grades" and body.get("status") != "ok"))
 
     def log_message(self, *args):
         pass

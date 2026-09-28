@@ -488,6 +488,8 @@ def tree(hid, min_similarity=0.0):
             for depth, n in enumerate(reversed(names)):
                 cur = child(cur, n["name"], "companion" if depth == 0 else "narrator", bool(n.get("uncertain")))
                 path.append(cur)
+                if "prov" not in nodes[cur] and n.get("span"):
+                    nodes[cur]["prov"] = _name_view(h, n, rt["join"])["prov"]
             if rt.get("to_prophet", True):
                 nodes[path[1]]["linked"] = True
             cur = child(cur, h["compiler"], "book", False)
@@ -522,6 +524,17 @@ def tree(hid, min_similarity=0.0):
         if n["parent"]:
             edges.append({"source": n["parent"], "target": n["key"], "chains": sorted(n["chains"]),
                           "unlinked": n["parent"] == "prophet" and not n["linked"]})
+    for n in nodes.values():
+        # teachers / students of a narrator inside this tree, read from the isnads
+        n["teachers"] = [nodes[n["parent"]]["label"]] if n["parent"] and n["kind"] != "companion" else []
+        n["students"] = [nodes[c]["label"] for c in children[n["key"]] if nodes[c]["kind"] != "book"]
+        n["compilers"] = [nodes[c]["label"] for c in children[n["key"]] if nodes[c]["kind"] == "book"]
+        if n["kind"] in ("companion", "narrator") and n.get("prov"):
+            hid0 = n["prov"]["url"]
+            n["relations_prov"] = prov.make(prov.LK_NAME, hid0, n["prov"]["quote"], prov.LK_RETRIEVED,
+                                            "الشيوخ والتلاميذ هنا هم من قبله ومن بعده في أسانيد هذه الشجرة فقط، "
+                                            "كما قرأها سند آليًا من نصوص الأسانيد. ليست قائمة كاملة بشيوخه وتلاميذه.",
+                                            "uncertain" if n["uncertain"] or n["merge"] == "prefix" else "high")
     for n in nodes.values():
         n["chains"] = sorted(n["chains"])
         n["hids"] = sorted(n["hids"])

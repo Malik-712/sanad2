@@ -243,6 +243,11 @@ details.more > summary { cursor: pointer; font-weight: 600; margin: var(--s-6) 0
 .grade-line { font-size: var(--t-sm); }
 .grade-line .who { font-weight: 600; }
 .grade-line q { font-family: var(--f-text); font-size: var(--t-lg); quotes: "«" "»"; }
+.grade-item { padding: var(--s-3) 0; border-top: 1px solid var(--rule); }
+.grade-item:first-child { border-top: 0; padding-top: 0; }
+.grade-item .facts { grid-template-columns: max-content 1fr; }
+.verdict-q { font-family: var(--f-text); font-size: var(--t-lg); quotes: "«" "»"; }
+.side details.more > summary { margin: var(--s-3) 0 var(--s-2); font-size: var(--t-sm); }
 .tag { display: inline-block; font-size: var(--t-xs); padding: 1px 8px; border-radius: 999px; border: 1px solid var(--rule-strong); color: var(--ink-2); font-weight: 500; }
 
 /* provenance box: "كيف حصلنا على هذه المعلومة؟" */
@@ -357,6 +362,9 @@ input[type="range"] { width: 100%; accent-color: var(--ink); }
 .node-panel ul { padding-inline-start: 18px; margin: var(--s-2) 0; font-size: var(--t-sm); }
 .node-panel .row { display: flex; gap: var(--s-2); flex-wrap: wrap; margin-top: var(--s-3); }
 
+.profile { margin-top: var(--s-4); border-top: 1px solid var(--rule); padding-top: var(--s-3); }
+.profile h4 { font-size: var(--t-sm); margin-bottom: var(--s-2); }
+.profile .facts { margin-top: var(--s-3); }
 .compare { margin-top: var(--s-3); display: grid; gap: var(--s-2); }
 .compare .diff { font-size: var(--t-lg); line-height: 2; background: var(--sunk); border-radius: var(--r-2); padding: var(--s-3); }
 .toast { position: fixed; bottom: var(--s-5); left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--on-ink);

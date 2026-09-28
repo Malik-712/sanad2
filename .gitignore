@@ -3,3 +3,5 @@ __pycache__/
 .vercel/
 .DS_Store
 node_modules/
+data/dorar_runtime_cache.json
+data/*.tmp

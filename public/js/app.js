@@ -246,6 +246,7 @@ async function hadithPage(id, q) {
   if (h.repaired) notes.push("نقل سند كلمات من أول المتن إلى آخر الإسناد لأن الفصل الآلي قطع اسم الراوي.");
   if (h.fragments.length) notes.push("في الإسناد أجزاء لم يذكر النص كيف تتصل بغيرها (تحويل غير موصول أو تعليق)؛ تُعرض منفصلة ولا تدخل الشجرة.");
   if (h.same_isnad) notes.push("الإسناد يقول «بهذا الإسناد»، فأكمل سند باقيه من الحديث السابق عند اسم مشترك، ووضعه بإطار متقطع.");
+  const gradesHtml = h.grade || h.grade_withheld ? datasetGrade(h) : `<p>${missing()}</p>`;
   app.innerHTML = `
     <a class="crumb" href="${q ? `/search?${new URLSearchParams({ q, mode: "verify" })}` : "/"}" data-link>${ICON.back}<span>${q ? "رجوع إلى النتائج" : "الصفحة الرئيسة"}</span></a>
     <header class="page-head"><h1>${esc(h.book_title)}، رقم ${esc(h.number)}</h1>
@@ -271,13 +272,53 @@ async function hadithPage(id, q) {
             <dt>الكتاب/الباب</dt><dd>${esc(h.chapter) || missing()}</dd></dl>
           ${provBox(h.source_prov)}
         </div>
-        <div class="box"><h3>الحكم</h3><div class="grades" id="grades">${h.grade || h.grade_withheld ? datasetGrade(h) : `<p>${missing()}</p>`}</div></div>
+        <div class="box"><h3>الحكم منسوبًا إلى قائله</h3><div class="grades" id="grades"><div class="loading">جارٍ جلب الأحكام من الدرر السنية…</div></div></div>
         <a class="tree-cta" href="/tree/${encodeURIComponent(h.id)}" data-link><div><b>اعرض شجرة الطرق</b>
           <span>${h.family.length ? `${h.family.length + 1} روايات لهذا الحديث في الكتب الستة` : "طرق هذا الحديث في رسم واحد"}</span></div>${ICON.tree}</a>
         ${h.family.length ? `<div class="box"><h3>روايات أخرى لهذا الحديث</h3><ul class="family">${h.family.slice(0, 8).map((x) => `<li><a href="/h/${esc(x.id)}" data-link>${esc(x.book_title)}، رقم ${esc(x.number)}</a><div class="meter">تشابه المتن ${fmtPct(x.similarity)}</div></li>`).join("")}</ul></div>` : ""}
       </aside>
     </div>`;
   focusMain();
+  loadGrades(h, gradesHtml);
+}
+
+const MATCH_LABEL = { same_source: "المصدر نفسه والرقم نفسه", same_text: "لفظ مطابق", candidate: "لفظ قريب" };
+function gradeItem(g) {
+  return `<div class="grade-item">
+    <dl class="facts">
+      <dt>المحدث</dt><dd>${esc(g.muhaddith)}</dd>
+      <dt>المصدر</dt><dd>${esc(g.book) || missing()}</dd>
+      <dt>الصفحة أو الرقم</dt><dd>${esc(g.ref) || missing()}</dd>
+      <dt>خلاصة حكم المحدث</dt><dd><q class="verdict-q">${esc(g.verdict)}</q></dd>
+    </dl>
+    <p class="meter"><span class="tag">${MATCH_LABEL[g.match] || ""}</span>${g.prov.confidence === "uncertain" ? ` <span class="tag">غير مؤكد</span>` : ""}</p>
+    ${provBox(g.prov)}
+  </div>`;
+}
+async function loadGrades(h, datasetHtml) {
+  const box = $("#grades");
+  let g;
+  try { g = await api({ action: "grades", id: h.id }); } catch (e) { if (e instanceof Aborted) return; g = { status: "unavailable", items: [] }; }
+  const sure = g.items.filter((x) => x.prov.confidence === "high");
+  const unsure = g.items.filter((x) => x.prov.confidence !== "high");
+  const dorarLink = g.search_url ? `<a href="${esc(g.search_url)}" target="_blank" rel="noopener">افتح البحث نفسه في الدرر السنية</a>` : "";
+  let html = "";
+  if (sure.length) {
+    html += sure.map(gradeItem).join("");
+  } else {
+    const why = {
+      ok: "", no_match: "لم نجد في نتائج الدرر نصًا يطابق لفظ هذا الحديث بثقة.",
+      not_fetched: "لم نجلب أحكام الدرر لهذا الحديث بعد.", unavailable: "تعذّر الوصول إلى الدرر السنية الآن.",
+      no_text: "لا يوجد متن في المصدر نبحث به.",
+    }[g.status] || "";
+    html += `<p>${missing()}</p>${why ? `<p class="meter">${why} ${dorarLink}</p>` : ""}`;
+  }
+  if (unsure.length) html += `<details class="more"><summary>نتائج غير مؤكدة (${unsure.length})</summary>${unsure.map(gradeItem).join("")}</details>`;
+  if (g.items.length) html += `<p class="meter">الأحكام منقولة بنصها من واجهة الدرر السنية الرسمية، ومنسوبة إلى قائليها كما وردت. سند لا يحكم على الحديث. ${dorarLink}</p>`;
+  html += sure.length && (h.grade || h.grade_withheld)
+    ? `<details class="more"><summary>حكم مجموعة البيانات (غير منسوب)</summary>${datasetHtml}</details>`
+    : `<div style="margin-top:12px">${h.grade || h.grade_withheld ? datasetHtml : ""}</div>`;
+  box.innerHTML = html;
 }
 
 function routeBlock(r, i, h) {
