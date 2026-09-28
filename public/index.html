@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>سند — تحقّق من الحديث قبل أن تنشره</title>
+  <meta name="description" content="الصق نصًا يُنسب إلى النبي ﷺ، فيخبرك سند هل هو موجود في الكتب الستة، وأين، وبأي لفظ، ويعرض شجرة طرقه.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='6' r='4' fill='%231d4e4a'/%3E%3Cpath d='M16 10v8M16 18l-8 8M16 18l8 8M16 18v8' stroke='%231d4e4a' stroke-width='2.5' fill='none'/%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="#/">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="6" r="4"/><path d="M16 10v8M16 18l-8 8M16 18l8 8M16 18v8"/></svg>
+      <span>سند</span>
+    </a>
+    <nav>
+      <a href="#/">تحقّق</a>
+      <a href="#/about">كيف يعمل سند؟</a>
+    </nav>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="foot">
+    <p>المصدر: الكتب الستة من <a href="https://github.com/ShathaTm/LK-Hadith-Corpus" target="_blank" rel="noopener">مدونة LK للحديث</a>. سند لا يؤلّف نصًا ولا يحكم على حديث؛ كل ما يُعرض منقول من مصدره.</p>
+    <p class="ver">النسخة 0 — نسخة الأساس قبل أيام التحدي</p>
+  </footer>
+
+  <script src="/vendor/cytoscape.min.js"></script>
+  <script src="/vendor/dagre.min.js"></script>
+  <script src="/vendor/cytoscape-dagre.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
