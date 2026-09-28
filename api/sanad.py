@@ -4,9 +4,11 @@ GET /api/sanad?action=search&q=...&mode=auto|verify|topic&book=...
 GET /api/sanad?action=hadith&id=bukhari-1
 GET /api/sanad?action=tree&id=bukhari-1
 GET /api/sanad?action=diff&id=bukhari-1&q=...
+GET /api/sanad?action=health
 """
 import json
 import os
+import re
 import sys
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
@@ -17,7 +19,22 @@ if ROOT not in sys.path:
 
 from sanad_core import engine  # noqa: E402
 
-MAX_QUERY = 1500
+MAX_QUERY = engine.MAX_QUERY_CHARS
+MAX_URL = 8000
+ID_RE = re.compile(r"^[a-z]{3,10}-\d{1,5}(?:-\d{1,2})?$")
+BOOKS = {"bukhari", "muslim", "abudawud", "tirmidhi", "nasai", "ibnmajah"}
+NOT_FOUND = "لم نجد هذا الحديث في بيانات سند."
+
+SECURITY_HEADERS = {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "X-Frame-Options": "DENY",
+}
+
+
+def _id(params):
+    hid = params.get("id", "")
+    return hid if ID_RE.match(hid) else None
 
 
 def route(params):
@@ -28,37 +45,56 @@ def route(params):
         if mode not in ("auto", "verify", "topic"):
             mode = "auto"
         book = params.get("book") or None
+        if book and book not in BOOKS:
+            return 400, {"error": "اسم الكتاب غير معروف."}
         return 200, engine.search(q, limit=10, book=book, mode=mode)
-    if action == "hadith":
-        h = engine.hadith(params.get("id", ""))
-        return (200, h) if h else (404, {"error": "لم نجد هذا الحديث في بيانات سند."})
-    if action == "tree":
-        t = engine.tree(params.get("id", ""))
-        return (200, t) if t else (404, {"error": "لم نجد هذا الحديث في بيانات سند."})
-    if action == "diff":
-        h = engine.hadith(params.get("id", ""))
-        if not h:
-            return 404, {"error": "لم نجد هذا الحديث في بيانات سند."}
-        return 200, {"diff": engine.word_diff(params.get("q", "")[:MAX_QUERY], h["matn"], focus=True)}
+    if action in ("hadith", "tree", "diff"):
+        hid = _id(params)
+        if not hid:
+            return 400, {"error": "رقم الحديث غير صالح."}
+        if action == "hadith":
+            h = engine.hadith(hid)
+            return (200, h) if h else (404, {"error": NOT_FOUND})
+        if action == "tree":
+            t = engine.tree(hid)
+            return (200, t) if t else (404, {"error": NOT_FOUND})
+        if action == "diff":
+            h = engine.hadith(hid)
+            if not h:
+                return 404, {"error": NOT_FOUND}
+            return 200, {"diff": engine.word_diff(params.get("q", "")[:MAX_QUERY], h["matn"], focus=True)}
     if action == "health":
         d = engine.data()
         return 200, {"ok": True, "hadiths": len(d["hadiths"])}
     return 400, {"error": "طلب غير معروف."}
 
 
+def respond(req, status, body, cache=True):
+    payload = json.dumps(body, ensure_ascii=False).encode("utf-8")
+    req.send_response(status)
+    req.send_header("Content-Type", "application/json; charset=utf-8")
+    req.send_header("Content-Length", str(len(payload)))
+    # errors must not be cached by the CDN
+    req.send_header("Cache-Control", "public, max-age=300, s-maxage=86400" if cache and status == 200 else "no-store")
+    for k, v in SECURITY_HEADERS.items():
+        req.send_header(k, v)
+    req.end_headers()
+    req.wfile.write(payload)
+
+
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        params = {k: v[0] for k, v in parse_qs(urlparse(self.path).query).items()}
+        if len(self.path) > MAX_URL:
+            return respond(self, 414, {"error": "الطلب أطول من المسموح."})
+        try:
+            params = {k: v[0] for k, v in parse_qs(urlparse(self.path).query, max_num_fields=20).items()}
+        except ValueError:
+            return respond(self, 400, {"error": "طلب غير صالح."})
         try:
             status, body = route(params)
         except Exception as exc:  # never leak a stack trace to the page
             status, body = 500, {"error": "حدث خطأ في الخادم.", "detail": type(exc).__name__}
-        payload = json.dumps(body, ensure_ascii=False).encode("utf-8")
-        self.send_response(status)
-        self.send_header("Content-Type", "application/json; charset=utf-8")
-        self.send_header("Cache-Control", "public, max-age=300, s-maxage=86400")
-        self.end_headers()
-        self.wfile.write(payload)
+        respond(self, status, body)
 
     def log_message(self, *args):
         pass

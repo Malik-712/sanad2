@@ -4,9 +4,14 @@
   const app = document.getElementById("app");
   const API = "/api/sanad";
 
+  class Stale extends Error {}
+  window.addEventListener("unhandledrejection", (e) => { if (e.reason instanceof Stale) e.preventDefault(); });
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  let renderSeq = 0;
   const api = async (params) => {
+    const seq = renderSeq;
     const r = await fetch(API + "?" + new URLSearchParams(params));
+    if (seq !== renderSeq) throw new Stale();
     const j = await r.json().catch(() => ({ error: "تعذّر قراءة الرد." }));
     if (!r.ok) throw new Error(j.error || "حدث خطأ.");
     return j;
@@ -138,6 +143,7 @@
       res.className = "";
       res.innerHTML = html;
     } catch (e) {
+      if (e instanceof Stale) return;
       res.className = "err";
       res.textContent = e.message;
     }
@@ -152,7 +158,7 @@
       if (q) diff = (await api({ action: "diff", id, q })).diff;
       const chain = [...h.chain].reverse();
       app.innerHTML = `
-        <a class="back" href="javascript:history.back()">رجوع</a>
+        <button type="button" class="back" data-back>رجوع</button>
         <div class="h-head"><h1>${esc(h.book_title)}، رقم ${esc(h.number)}</h1><div class="sub">${esc(h.chapter)}${h.section ? " — " + esc(h.section) : ""}</div></div>
         <article class="card">
           <div class="isnad">${esc(h.isnad)}</div>
@@ -172,6 +178,7 @@
         <a class="tree-cta" href="#/tree/${encodeURIComponent(h.id)}"><div><b>اعرض شجرة الطرق</b><span>${h.family.length ? `هذا الحديث له ${h.family.length + 1} رواية في الكتب الستة` : "كل الطرق في رسم واحد"}</span></div><span aria-hidden="true">←</span></a>
         ${h.family.length ? `<h3 class="more-title">روايات أخرى لهذا الحديث</h3>${h.family.slice(0, 8).map((x) => resultCard(x)).join("")}` : ""}`;
     } catch (e) {
+      if (e instanceof Stale) return;
       app.innerHTML = `<p class="err">${esc(e.message)}</p>`;
     }
   }
@@ -183,7 +190,7 @@
     app.className = "wide";
     app.innerHTML = `<div class="loading">جارٍ بناء الشجرة…</div>`;
     let T;
-    try { T = await api({ action: "tree", id }); } catch (e) { app.innerHTML = `<p class="err">${esc(e.message)}</p>`; return; }
+    try { T = await api({ action: "tree", id }); } catch (e) { if (!(e instanceof Stale)) app.innerHTML = `<p class="err">${esc(e.message)}</p>`; return; }
     const nodeBy = Object.fromEntries(T.nodes.map((n) => [n.key, n]));
     const mudar = T.mudar ? nodeBy[T.mudar] : null;
     const books = [...new Set(T.chains.map((c) => c.book))];
@@ -204,7 +211,7 @@
           <h3>الصحابي</h3>
           <select id="f-comp"><option value="">كل الصحابة</option>${companions.map((c) => `<option>${esc(c)}</option>`).join("")}</select>
           <h3>الكتب</h3>
-          ${books.map((b) => `<label><input type="checkbox" class="f-book" value="${b}" checked> ${esc(bookTitle[b])}</label>`).join("")}
+          ${books.map((b) => `<label><input type="checkbox" class="f-book" value="${esc(b)}" checked> ${esc(bookTitle[b])}</label>`).join("")}
           <label style="margin-top:6px"><input type="checkbox" id="f-sahih"> الصحيحان فقط</label>
           <h3>قرب الرواية من الحديث المختار</h3>
           <input type="range" id="f-sim" min="45" max="100" value="45" aria-label="أقل نسبة تشابه">
@@ -287,7 +294,7 @@
         <div class="meter">${kindName}${n.uncertain ? " — اسم قصير أو مشترك؛ تحديد صاحبه غير مؤكد" : ""}</div>
         ${n.variants.length ? `<div class="meter">ورد أيضًا باسم: ${n.variants.map(esc).join("، ")}</div>` : ""}
         <p style="margin:8px 0 2px">يمر به ${through.length} ${through.length === 1 ? "طريق" : "طرق"}:</p>
-        <ul>${through.slice(0, 30).map((c) => `<li><a href="#/h/${encodeURIComponent(c.id)}">${esc(c.book_title)}، رقم ${esc(c.number)}</a>${c.partial ? " <span class=\"meter\">(سند فيه تحويل)</span>" : ""}</li>`).join("")}</ul>`;
+        <ul>${through.slice(0, 30).map((c) => `<li><a href="#/h/${encodeURIComponent(c.hid)}">${esc(c.book_title)}، رقم ${esc(c.number)}</a>${c.partial ? " <span class=\"meter\">(سند فيه تحويل)</span>" : ""}</li>`).join("")}</ul>`;
     });
     cy.on("tap", (ev) => { if (ev.target === cy) { cy.elements().removeClass("dim hl"); info.textContent = "اضغط على أي اسم لتظهر طرقه وحده."; } });
     apply();
@@ -324,15 +331,18 @@
   }
 
   // --------------------------------------------------------------- router
+  const decode = (s) => { try { return decodeURIComponent(s); } catch { return ""; } };
   function render() {
+    renderSeq++;
     const { parts, q } = parseHash();
     window.scrollTo(0, 0);
     if (parts[0] === "search") return searchPage(q.get("q") || "", q.get("mode") || "verify");
-    if (parts[0] === "h" && parts[1]) return hadithPage(decodeURIComponent(parts[1]), q.get("q"));
-    if (parts[0] === "tree" && parts[1]) return treePage(decodeURIComponent(parts[1]));
+    if (parts[0] === "h" && parts[1]) return hadithPage(decode(parts[1]), q.get("q"));
+    if (parts[0] === "tree" && parts[1]) return treePage(decode(parts[1]));
     if (parts[0] === "about") return about();
     return home();
   }
+  app.addEventListener("click", (e) => { if (e.target.closest("[data-back]")) history.back(); });
   window.addEventListener("hashchange", render);
   render();
 })();

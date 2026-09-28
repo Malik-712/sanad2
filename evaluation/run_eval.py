@@ -13,6 +13,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 from sanad_core import engine  # noqa: E402
 
+try:  # Windows consoles default to a code page without ✓/✗ or Arabic
+    sys.stdout.reconfigure(encoding="utf-8")
+except AttributeError:
+    pass
+
 with open(os.path.join(ROOT, "evaluation", "smoke_cases.json"), encoding="utf-8") as fh:
     CASES = json.load(fh)
 

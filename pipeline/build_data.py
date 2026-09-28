@@ -25,7 +25,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 from sanad_core.arabic import normalize, tokens, char_ngrams  # noqa: E402
-from sanad_core.isnad import parse_isnad  # noqa: E402
+sys.path.insert(0, os.path.join(ROOT, "pipeline"))
+from chains import build_chains  # noqa: E402
 
 BOOKS = {
     "Bukhari": ("bukhari", "صحيح البخاري", "البخاري"),
@@ -71,6 +72,7 @@ def load(lk_dir):
                         "comment": (r.get("Arabic_Comment") or "").strip(),
                         "grade": (r.get("Arabic_Grade") or "").strip(),
                         "gold_segmentation": book == "Bukhari",
+                        "src": f"{book}/{os.path.basename(f)}",
                     })
     return records
 
@@ -79,25 +81,12 @@ def build(lk_dir, out_dir):
     recs = load(lk_dir)
     print("hadiths:", len(recs))
 
-    # --- chains ------------------------------------------------------------
+    # --- chains (see pipeline/chains.py) -------------------------------------
     for r in recs:
-        p = parse_isnad(r["isnad"], r["matn"])
-        r["chain"] = p["names"]
-        r["chain_partial"] = p["partial"]
-        r["chain_repaired"] = p["repaired"]
         nm = normalize(r["matn"])
         r["nm"] = nm
         r["refers_back"] = bool(REFERS_BACK.search(nm)) and len(nm.split()) < 25
-
-    # accusative forms ("جابرا", "نافعا" -> "جابر", "نافع") when the plain form
-    # is a frequent narrator name word
-    wc = collections.Counter(w for r in recs for n in r["chain"] for w in n["name"].split())
-    for r in recs:
-        for n in r["chain"]:
-            ws = n["name"].split()
-            fixed = [w[:-1] if (w.endswith("ا") and len(w) > 3 and wc[w[:-1]] >= 20 and wc[w[:-1]] > 3 * wc[w]) else w
-                     for w in ws]
-            n["name"] = " ".join(fixed)
+    print("chains:", build_chains(recs))
 
     # --- search index (BM25 postings over matn tokens) ----------------------
     postings = collections.defaultdict(list)
@@ -132,8 +121,8 @@ def build(lk_dir, out_dir):
 
     os.makedirs(out_dir, exist_ok=True)
     keep = ["id", "book", "book_title", "compiler", "number", "chapter", "section", "isnad", "matn",
-            "comment", "grade", "gold_segmentation", "chain", "chain_partial", "chain_repaired", "nm",
-            "refers_to"]
+            "comment", "grade", "gold_segmentation", "src", "chain", "chain_partial", "chain_repaired",
+            "routes", "fragments", "tahwil", "same_isnad", "to_prophet", "nm", "refers_to"]
     slim = [{k: r[k] for k in keep if k in r} for r in recs]
 
     def dump(name, obj):

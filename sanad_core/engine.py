@@ -8,6 +8,8 @@ import os
 import re
 
 from .arabic import normalize, tokens, char_ngrams, STOPWORDS
+from .isnad import quote as isnad_quote
+from . import provenance as prov
 
 DATA_DIR = os.environ.get("SANAD_DATA", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"))
 
@@ -17,6 +19,12 @@ DATA_DIR = os.environ.get("SANAD_DATA", os.path.join(os.path.dirname(os.path.dir
 T_FOUND = 0.85      # ordered word alignment with the best matn -> "موجود في المصادر"
 T_NEAR = 0.70       # -> "يوجد حديث قريب"
 T_FAMILY = 0.45     # matn similarity to count as the same hadith in the tree
+
+# Input limits: alignment is quadratic in the query length, so long pastes are
+# cut before alignment (a hadith is rarely longer than this).
+MAX_QUERY_CHARS = 1500
+MAX_ALIGN_WORDS = 120
+MAX_ANCHORS = 12
 
 PROPHET = "النبي ﷺ"
 
@@ -110,7 +118,21 @@ def _stem(w):
     return _PREFIX.sub("", w)
 
 
+_SIM_CACHE = {}
+
+
 def _word_sim(a, b):
+    key = (a, b)
+    r = _SIM_CACHE.get(key)
+    if r is None:
+        r = _word_sim_raw(a, b)
+        if len(_SIM_CACHE) > 200_000:
+            _SIM_CACHE.clear()
+        _SIM_CACHE[key] = r
+    return r
+
+
+def _word_sim_raw(a, b):
     if a == b:
         return 1.0
     sa, sb = _stem(a), _stem(b)
@@ -131,7 +153,7 @@ def alignment(query_norm, doc_norm):
     """Weighted share of the query words found in the same order inside one
     contiguous window of the document (tolerates small spelling differences).
     Rare words weigh more than common ones, so "من الإيمان" alone is weak."""
-    q = query_norm.split()
+    q = query_norm.split()[:MAX_ALIGN_WORDS]
     doc = doc_norm.split()
     if not q or not doc:
         return 0.0
@@ -140,9 +162,9 @@ def alignment(query_norm, doc_norm):
     best = 0.0
     anchors = {i for i, dw in enumerate(doc) for qw in q[:3] if _word_sim(qw, dw)}
     if not anchors:
-        anchors = {i for i, dw in enumerate(doc) for qw in q if _word_sim(qw, dw)}
+        anchors = {i for i, dw in enumerate(doc) for qw in q[:12] if _word_sim(qw, dw)}
     span = len(q) + 3
-    for a in sorted(anchors)[:40]:
+    for a in sorted(anchors)[:MAX_ANCHORS]:
         win = doc[max(0, a - 1): a - 1 + span + 1]
         # ordered weighted LCS
         prev = [0.0] * (len(win) + 1)
@@ -157,7 +179,7 @@ def alignment(query_norm, doc_norm):
 
 
 # ------------------------------------------------------------------ search
-TOPIC_PREFIX = re.compile(r"^(حديث|احاديث|ابحث|اريد|ما هو|ما)\s+(عن|في|حديث)?")
+TOPIC_PREFIX = re.compile(r"^(?:حديث|احاديث|ابحث|اريد|ما هو|ما هي)\s+(?:(?:عن|في|حديث)\s+)?")
 
 
 def detect_mode(query):
@@ -168,6 +190,7 @@ def search(query, limit=10, book=None, mode="auto"):
     """mode="verify": the user pasted a text and wants to know if it exists.
     mode="topic": the user describes a subject; results are listed without a verdict."""
     d = data()
+    query = (query or "")[:MAX_QUERY_CHARS]
     if mode == "auto":
         mode = detect_mode(query)
     qn = normalize(query)
@@ -225,6 +248,11 @@ def card(h):
     return {
         "id": h["id"], "book": h["book"], "book_title": h["book_title"], "number": h["number"],
         "chapter": h["chapter"], "section": h["section"], "matn": h["matn"], "grade": h["grade"],
+        "matn_prov": prov.lk(h, "Arabic_Matn", h["matn"][:160] + ("…" if len(h["matn"]) > 160 else "")),
+        "grade_prov": prov.lk(h, "Arabic_Grade", h["grade"],
+                              method="نُقل كما هو من عمود Arabic_Grade في المدونة. المدونة لا تذكر قائل الحكم.",
+                              attributed=False) if h["grade"] else None,
+        "source_prov": prov.lk(h, "Chapter_Arabic / Hadith_number", f"{h['chapter']} — {h['number']}"),
     }
 
 
@@ -269,6 +297,34 @@ def word_diff(user_text, source_text, focus=False, context=8):
 
 
 # ------------------------------------------------------------- hadith + tree
+def routes_of(h):
+    """All routes of a hadith (v1 data), or the single v0 chain."""
+    if h.get("routes") is not None:
+        return h["routes"]
+    return [{"names": h["chain"], "join": "direct", "to_prophet": True}] if h.get("chain") else []
+
+
+def _name_view(h, n, join):
+    """A narrator name as read from the isnad, with the words it came from."""
+    d = data()
+    src = h
+    if n.get("from"):
+        k = d["by_id"].get(n["from"])
+        src = d["hadiths"][k] if k is not None else h
+    q = isnad_quote(src["isnad"], src["matn"], n["span"]) if n.get("span") else ""
+    how = prov.parse_method(join)
+    if n.get("relative"):
+        how += " الاسم مبني من إحالة في النص (مثل «عن أبيه»)، وليس مكتوبًا بلفظه."
+    if n.get("from"):
+        how += f" هذا الاسم من سند الحديث {src['book_title']} {src['number']}."
+    return {
+        "name": n["name"], "uncertain": bool(n.get("uncertain")), "relative": bool(n.get("relative")),
+        "doubt": bool(n.get("doubt")), "from": n.get("from"),
+        "prov": prov.lk(src, "Arabic_Isnad", q, method=how,
+                        confidence="uncertain" if n.get("uncertain") else "high"),
+    }
+
+
 def hadith(hid):
     d = data()
     i = d["by_id"].get(hid)
@@ -276,9 +332,16 @@ def hadith(hid):
         return None
     h = d["hadiths"][i]
     fam = family(i)
+    routes = [{"join": r["join"], "to_prophet": r.get("to_prophet", True), "prior": r.get("prior"),
+               "names": [_name_view(h, n, r["join"]) for n in r["names"]]} for r in routes_of(h)]
+    fragments = [[_name_view(h, n, "direct") for n in f] for f in h.get("fragments", [])]
     return {**card(h), "isnad": h["isnad"], "comment": h["comment"], "compiler": h["compiler"],
             "gold_segmentation": h["gold_segmentation"], "chain": h["chain"],
             "chain_partial": h["chain_partial"], "refers_to": h.get("refers_to"),
+            "routes": routes, "fragments": fragments, "tahwil": bool(h.get("tahwil")),
+            "same_isnad": bool(h.get("same_isnad")),
+            "isnad_prov": prov.lk(h, "Arabic_Isnad", h["isnad"]),
+            "comment_prov": prov.lk(h, "Arabic_Comment", h["comment"]) if h["comment"] else None,
             "family": [{**card(d["hadiths"][j]), "similarity": s} for j, s in fam if j != i]}
 
 
@@ -313,24 +376,31 @@ def _words_prefix(a, b):
 def tree(hid, min_similarity=0.0):
     """Tree of all routes of a hadith, from the Prophet down to the compilers.
 
-    Routes are merged top-down: at each level, a narrator joins an existing
-    branch only if it hangs under the SAME teacher and the names match (equal,
-    or one is a word-prefix of the other). That teacher-context rule avoids
-    merging two different people who share a short name like "سفيان"."""
+    Every route of every narration in the family is drawn (a تحويل chain or
+    co-narrators give several routes per narration). Routes are merged
+    top-down: at each level, a narrator joins an existing branch only if it
+    hangs under the SAME teacher and the names match (equal, or one is a
+    word-prefix of the other). That teacher-context rule avoids merging two
+    different people who share a short name like "سفيان". Prefix merges are
+    flagged (merge="prefix") and drawn dashed."""
     d = data()
     i = d["by_id"].get(hid)
     if i is None:
         return None
     nodes = {"prophet": {"key": "prophet", "label": PROPHET, "kind": "prophet", "uncertain": False,
-                         "variants": [], "chains": set(), "books": set(), "parent": None, "depth": 0}}
+                         "merge": "exact", "variants": [], "chains": set(), "hids": set(), "books": set(),
+                         "parent": None, "depth": 0, "linked": True}}
     children = collections.defaultdict(list)
     chains = []
+    incomplete = []
     counter = [0]
 
     def child(parent, name, kind, uncertain):
         for ck in children[parent]:
             c = nodes[ck]
             if c["kind"] == kind and (c["label"] == name or (kind != "book" and _words_prefix(c["label"], name))):
+                if name != c["label"]:
+                    c["merge"] = "prefix"
                 if len(name.split()) > len(c["label"].split()):
                     c["variants"].append(c["label"])
                     c["label"] = name
@@ -340,8 +410,9 @@ def tree(hid, min_similarity=0.0):
                 return ck
         counter[0] += 1
         key = f"n{counter[0]}"
-        nodes[key] = {"key": key, "label": name, "kind": kind, "uncertain": uncertain, "variants": [],
-                      "chains": set(), "books": set(), "parent": parent, "depth": nodes[parent]["depth"] + 1}
+        nodes[key] = {"key": key, "label": name, "kind": kind, "uncertain": uncertain, "merge": "exact",
+                      "variants": [], "chains": set(), "hids": set(), "books": set(), "parent": parent,
+                      "depth": nodes[parent]["depth"] + 1, "linked": False}
         children[parent].append(key)
         return key
 
@@ -349,23 +420,35 @@ def tree(hid, min_similarity=0.0):
         if sim < min_similarity:
             continue
         h = d["hadiths"][j]
-        names = h["chain"]
-        if not names:
-            continue
-        path = ["prophet"]
-        cur = "prophet"
-        for depth, n in enumerate(reversed(names)):
-            cur = child(cur, n["name"], "companion" if depth == 0 else "narrator", n["uncertain"])
+        for k, rt in enumerate(routes_of(h)):
+            names = rt["names"]
+            if not names:
+                continue
+            rid = f"{h['id']}#{k}"
+            # one name and no mention of the Prophet after it: the chain was
+            # cut (usually by the automatic isnad/matn split); not drawn
+            if len(names) < 2 and not rt.get("to_prophet", True):
+                incomplete.append({"id": rid, "hid": h["id"], "book_title": h["book_title"], "number": h["number"]})
+                continue
+            path = ["prophet"]
+            cur = "prophet"
+            for depth, n in enumerate(reversed(names)):
+                cur = child(cur, n["name"], "companion" if depth == 0 else "narrator", bool(n.get("uncertain")))
+                path.append(cur)
+            if rt.get("to_prophet", True):
+                nodes[path[1]]["linked"] = True
+            cur = child(cur, h["compiler"], "book", False)
             path.append(cur)
-        cur = child(cur, h["compiler"], "book", False)
-        path.append(cur)
-        for k in path:
-            nodes[k]["chains"].add(h["id"])
-            nodes[k]["books"].add(h["book"])
-        chains.append({"id": h["id"], "book": h["book"], "book_title": h["book_title"], "number": h["number"],
-                       "partial": h["chain_partial"], "similarity": sim, "nodes": path})
+            for key in path:
+                nodes[key]["chains"].add(rid)
+                nodes[key]["hids"].add(h["id"])
+                nodes[key]["books"].add(h["book"])
+            chains.append({"id": rid, "hid": h["id"], "book": h["book"], "book_title": h["book_title"],
+                           "number": h["number"], "partial": bool(h.get("fragments")), "join": rt["join"],
+                           "to_prophet": bool(rt.get("to_prophet", True)), "similarity": sim,
+                           "length": len(names), "nodes": path})
 
-    # companion label per chain (after merging)
+    # companion label per route (after merging)
     for c in chains:
         c["companion"] = nodes[c["nodes"][1]]["label"] if len(c["nodes"]) > 2 else ""
     # convergence point (المدار): where the routes start to branch.
@@ -381,14 +464,20 @@ def tree(hid, min_similarity=0.0):
             score = len(n["chains"]) * (branches - 1)
             if branches >= 2 and score > best:
                 best, mudar = score, n["key"]
-    edges = [{"source": n["parent"], "target": n["key"], "chains": sorted(n["chains"])}
-             for n in nodes.values() if n["parent"]]
+    edges = []
+    for n in nodes.values():
+        if n["parent"]:
+            edges.append({"source": n["parent"], "target": n["key"], "chains": sorted(n["chains"]),
+                          "unlinked": n["parent"] == "prophet" and not n["linked"]})
     for n in nodes.values():
         n["chains"] = sorted(n["chains"])
+        n["hids"] = sorted(n["hids"])
         n["books"] = sorted(n["books"])
-    companions = sorted({c["companion"] for c in chains if c["companion"]})
+    companions = sorted({c["companion"] for c in chains if c["companion"] and c["to_prophet"]})
     return {
         "id": hid, "nodes": list(nodes.values()), "edges": edges, "chains": chains, "mudar": mudar,
-        "summary": {"routes": len(chains), "companions": len(companions), "companion_names": companions,
+        "incomplete": incomplete,
+        "summary": {"routes": len(chains), "narrations": len({c["hid"] for c in chains}),
+                    "companions": len(companions), "companion_names": companions,
                     "books": sorted({c["book_title"] for c in chains})},
     }
