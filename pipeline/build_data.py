@@ -26,7 +26,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 from sanad_core.arabic import normalize, tokens, char_ngrams  # noqa: E402
 sys.path.insert(0, os.path.join(ROOT, "pipeline"))
-from chains import build_chains  # noqa: E402
+from chains import build_chains, clean_fields  # noqa: E402
 
 BOOKS = {
     "Bukhari": ("bukhari", "صحيح البخاري", "البخاري"),
@@ -79,6 +79,7 @@ def load(lk_dir):
 
 def build(lk_dir, out_dir):
     recs = load(lk_dir)
+    print("'nan' placeholders emptied:", clean_fields(recs))
     print("hadiths:", len(recs))
 
     # --- chains (see pipeline/chains.py) -------------------------------------

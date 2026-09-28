@@ -8,7 +8,7 @@ import os
 import re
 
 from .arabic import normalize, tokens, char_ngrams, STOPWORDS
-from .isnad import quote as isnad_quote
+from .isnad import quote as isnad_quote, _tokens as isnad_tokens, _is_marker, TAHWIL
 from . import provenance as prov
 
 DATA_DIR = os.environ.get("SANAD_DATA", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"))
@@ -244,14 +244,21 @@ def search(query, limit=10, book=None, mode="auto"):
     return {"query": query, "mode": mode, "state": state, "corrections": corrections, "results": out}
 
 
+# Sanad never shows these words as a label. A dataset grade containing them
+# has no named scholar, so it is withheld (see the religious-sourcing skill).
+FORBIDDEN_LABELS = ("موضوع", "متواتر")
+
+
 def card(h):
+    withheld = any(w in h["grade"] for w in FORBIDDEN_LABELS)
+    grade = "" if withheld else h["grade"]
     return {
         "id": h["id"], "book": h["book"], "book_title": h["book_title"], "number": h["number"],
-        "chapter": h["chapter"], "section": h["section"], "matn": h["matn"], "grade": h["grade"],
-        "matn_prov": prov.lk(h, "Arabic_Matn", h["matn"][:160] + ("…" if len(h["matn"]) > 160 else "")),
+        "chapter": h["chapter"], "section": h["section"], "matn": h["matn"], "grade": grade, "grade_withheld": withheld,
+        "matn_prov": prov.lk(h, "Arabic_Matn", h["matn"][:160] + ("…" if len(h["matn"]) > 160 else "")) if h["matn"] else None,
         "grade_prov": prov.lk(h, "Arabic_Grade", h["grade"],
                               method="نُقل كما هو من عمود Arabic_Grade في المدونة. المدونة لا تذكر قائل الحكم.",
-                              attributed=False) if h["grade"] else None,
+                              attributed=False) if grade else None,
         "source_prov": prov.lk(h, "Chapter_Arabic / Hadith_number", f"{h['chapter']} — {h['number']}"),
     }
 
@@ -325,6 +332,30 @@ def _name_view(h, n, join):
     }
 
 
+def isnad_words(h):
+    """The isnad's original words, each tagged for display:
+    "m" transmission word (rubricated), "n" part of a parsed name, "" other.
+    Tags come from the parser's own tokens and spans, never from the display."""
+    words = h["isnad"].split()
+    kinds = [""] * len(words)
+    for w, oi in isnad_tokens(h["isnad"]):
+        if oi < len(words) and (_is_marker(w) or w in TAHWIL):
+            kinds[oi] = "m"
+    for r in routes_of(h):
+        for n in r["names"]:
+            if n.get("from") or not n.get("span"):
+                continue
+            for k in range(n["span"][0], min(n["span"][1], len(words))):
+                if kinds[k] != "m":
+                    kinds[k] = "n"
+    for f in h.get("fragments", []):
+        for n in f:
+            for k in range(n["span"][0], min(n["span"][1], len(words))):
+                if kinds[k] != "m":
+                    kinds[k] = "n"
+    return [[w, k] for w, k in zip(words, kinds)]
+
+
 def hadith(hid):
     d = data()
     i = d["by_id"].get(hid)
@@ -339,6 +370,7 @@ def hadith(hid):
             "gold_segmentation": h["gold_segmentation"], "chain": h["chain"],
             "chain_partial": h["chain_partial"], "refers_to": h.get("refers_to"),
             "routes": routes, "fragments": fragments, "tahwil": bool(h.get("tahwil")),
+            "isnad_words": isnad_words(h), "repaired": bool(h.get("chain_repaired")),
             "same_isnad": bool(h.get("same_isnad")),
             "isnad_prov": prov.lk(h, "Arabic_Isnad", h["isnad"]),
             "comment_prov": prov.lk(h, "Arabic_Comment", h["comment"]) if h["comment"] else None,

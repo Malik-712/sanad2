@@ -95,3 +95,54 @@ original diacritized words it was read from, so each name can be quoted.
 The bukhari-1 "second companion" in v0 was «سليمان بن منصور», a chain cut
 by the automatic isnad/matn split (nasai-75). It is now reported as
 incomplete instead of being drawn under the Prophet.
+
+---
+
+## Phase 2 — Visual identity (2026-09-28)
+
+### Identity
+- **One idea, rubrication.** In hadith manuscripts the transmission words
+  were written in red ink so the chain stood out. Sanad's rubric red
+  (`--rubric`) is used only for transmission words, the chain thread and the
+  mark. Verdicts never use red: "not found" is not a judgment.
+- **Mark:** the three teeth of «س» drawn as three narrator nodes on one
+  baseline; the first node in rubric. `public/favicon.svg` adapts to dark mode.
+- **Type:** Amiri for all source text (best tashkeel rendering), Readex Pro
+  for the interface. Type scale 13–52 px (ratio 1.25), 4 px spacing scale.
+- **Colour tokens** for light and dark (`prefers-color-scheme`, plus a manual
+  switch: system / light / dark, remembered per browser). Every text colour
+  pair passes WCAG AA; lowest 5.42:1 (light), 6.9:1 (dark).
+- Components: buttons, segmented control, verdict, result, provenance box
+  («كيف حصلنا على هذه المعلومة؟»), vertical and horizontal chains, notes,
+  facts list, tree side panel, legend.
+
+### Pages (all rebuilt, RTL, mobile first)
+- Clean URLs (`/search`, `/h/:id`, `/tree/:id`, `/about`, `/about/sources`);
+  old `#/` links still work. ES modules, no build step.
+- **Home:** the input, texts to try, and a real isnad (Bukhari 1) read live
+  from the API with its transmission words rubricated and its narrators lifted
+  into a chain: the one load animation, off under reduced motion.
+- **Results:** verdict, source citation, word diff with legend, match meter
+  (labelled as a computation), unattributed grade tagged as such.
+- **Hadith page:** matn, rubricated isnad, every route (compact when there are
+  several), fragments, notes on automatic segmentation, source panel, grade,
+  other narrations, link to the tree. Provenance box on every field.
+- **Tree:** restyled; legend explains every symbol (full rework in Phase 3).
+- **About:** rewritten; states what Sanad does not do.
+- Skip link, visible focus, `aria-current` in navigation, `aria-live` results,
+  reduced motion respected, no horizontal scroll at 390 px (checked with
+  Playwright on every page, desktop and mobile, light and dark).
+
+### Data fixes found while reviewing screenshots
+- The corpus CSVs store empty cells as the string "nan" (a pandas missing
+  value). 30,401 fields were shown as text, e.g. a comment reading «nan».
+  They are now empty and display «غير متوفر في المصدر» (`clean_fields` in
+  `pipeline/chains.py`).
+- 4 hadiths carry an unattributed dataset grade containing «موضوع» or
+  «متواتر». Sanad does not show these words unless attributed to a named
+  scholar, so these grades are withheld with an explanation.
+
+### Security
+- CSP keeps `script-src 'self'` (no inline scripts; the theme is applied by
+  `/js/theme.js`). `style-src` allows `'unsafe-inline'` because the vendored
+  Cytoscape sets inline styles.

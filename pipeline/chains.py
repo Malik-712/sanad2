@@ -50,6 +50,21 @@ def add_source_files(recs, lk_files_path=os.path.join(ROOT, "data", "lk_files.js
                 recs[i]["src"] = f"{folder}/Chapter{num}.csv"
 
 
+NAN_FIELDS = ("isnad", "matn", "comment", "grade", "section", "chapter")
+
+
+def clean_fields(recs):
+    """The CSV export wrote empty cells as the string "nan" (a pandas missing
+    value). That is not source text: make those fields empty."""
+    n = 0
+    for r in recs:
+        for k in NAN_FIELDS:
+            if isinstance(r.get(k), str) and r[k].strip().lower() in ("nan", "none", "null"):
+                r[k] = ""
+                n += 1
+    return n
+
+
 def build_chains(recs):
     for r in recs:
         p = parse_isnad(r["isnad"], r["matn"])
