@@ -248,3 +248,14 @@ against bots, and Sanad does not work around that.
   occur in the six books (e.g. «الصين»). It now says the word was not found
   and which nearest word was searched.
 - Tests: 56 (was 44 after Phase 1).
+
+---
+
+## Finish (2026-09-28)
+
+- README.md rewritten for the current state (phases, how it works, running,
+  tests, data scripts, structure, known limits). SOURCES.md adds the Dorar API,
+  the Dorar biographies (not used) and why, the "nan" cleaning, the CSV-file
+  mapping, and the new UI font.
+- Final checks: `run_eval.py` 22/22, 0 false "exists"; 56 unit tests pass
+  offline; parser metrics as in the Phase 1 table (unchanged by later phases).
