@@ -208,7 +208,7 @@ async function searchPage(q, mode) {
       <span class="glyph">${ICON_OF[cls]}</span>
       <div><h2 id="v-title">${title}</h2><p>${body}</p>
       ${r.state === "not_found" ? `<p class="fix">للتحقق الأوسع: <a href="https://dorar.net/hadith/search?q=${encodeURIComponent(q)}" target="_blank" rel="noopener">ابحث عن النص نفسه في الموسوعة الحديثية (الدرر السنية)</a>، أو اسأل مختصًا.</p>` : ""}
-      ${fixes.length ? `<p class="fix">صحّحنا الإملاء للبحث: ${fixes.map(([a, b]) => `${esc(a)} ← ${esc(b)}`).join("، ")}</p>` : ""}</div>
+      ${fixes.length ? `<p class="fix">كلمات لم ترد في المتون، فبحثنا بأقرب كلمة إليها في الكتابة: ${fixes.map(([a, b]) => `${esc(a)} ← ${esc(b)}`).join("، ")}</p>` : ""}</div>
     </section>`;
   const items = r.results || [];
   if ((r.state === "found" || r.state === "near") && items.length) {

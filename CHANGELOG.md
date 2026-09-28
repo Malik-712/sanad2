@@ -227,3 +227,24 @@ against bots, and Sanad does not work around that.
   high-confidence match, 13 matched to the book's own entry and number.
 - `tests/test_dorar.py`: 8 offline tests (parser on a real two-result API
   response, attribution, confidence rules, policy constants).
+
+---
+
+## Phase 5 — Provenance report (2026-09-28)
+
+- Every religious field and every narrator-profile field has an expandable
+  «كيف حصلنا على هذه المعلومة؟» box: source (linked), the exact quote,
+  retrieval date, extraction method and, where a parse or match is involved,
+  confidence with its numbers. Missing fields say «غير متوفر في المصدر» and the
+  box says why.
+- `sanad_core/sources.py`: one catalog of every data source (LK corpus, Dorar
+  API, Dorar biographies — not used, Sanad's parser output, libraries, fonts),
+  every field shown and where it comes from, the Dorar access record, and the
+  open risks.
+- `docs/PROVENANCE.md` is generated from it (`python pipeline/gen_provenance.py`);
+  a test fails if the file is stale or if an API provenance key is undocumented.
+- `/about/sources` page (API `action=sources`) renders the same catalog.
+- Copy fix: the spelling note said «صحّحنا الإملاء» when a word simply does not
+  occur in the six books (e.g. «الصين»). It now says the word was not found
+  and which nearest word was searched.
+- Tests: 56 (was 44 after Phase 1).

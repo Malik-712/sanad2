@@ -6,6 +6,7 @@ GET /api/sanad?action=tree&id=bukhari-1
 GET /api/sanad?action=diff&id=bukhari-1&q=...
 GET /api/sanad?action=compare&a=bukhari-1&b=muslim-4927   (wording of two narrations)
 GET /api/sanad?action=grades&id=bukhari-1      (Dorar attributions, official API, cached)
+GET /api/sanad?action=sources                  (every data source, for /about/sources)
 GET /api/sanad?action=health
 """
 import json
@@ -77,6 +78,9 @@ def route(params):
         if not ha or not hb:
             return 404, {"error": NOT_FOUND}
         return 200, {"a": engine.card(ha), "b": engine.card(hb), "diff": engine.compare_matn(ha["matn"], hb["matn"])}
+    if action == "sources":
+        from sanad_core import sources
+        return 200, sources.catalog()
     if action == "health":
         d = engine.data()
         return 200, {"ok": True, "hadiths": len(d["hadiths"])}
