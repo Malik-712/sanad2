@@ -146,3 +146,36 @@ incomplete instead of being drawn under the Prophet.
 - CSP keeps `script-src 'self'` (no inline scripts; the theme is applied by
   `/js/theme.js`). `style-src` allows `'unsafe-inline'` because the vendored
   Cytoscape sets inline styles.
+
+---
+
+## Phase 3 — A stronger isnad tree (2026-09-28)
+
+- **Opens large and clear:** if the whole tree fits at a readable zoom
+  (≥ 0.85) it is fitted; otherwise it opens at that zoom with the Prophet at
+  the top and the view centred on the branching point (المدار).
+- **Full screen** (button or F; Esc to leave), **zoom in / out / fit**
+  (buttons or + − 0), **minimap** (click to jump; hidden below 600 px).
+- **Find a narrator in the tree:** Arabic-normalized search over names and
+  their variant spellings, keyboard navigable (combobox); the hit is centred,
+  outlined in blue and its routes are shown.
+- **Filters:** all companions, one companion (with route counts), the
+  companion with the most routes, by book, the two Sahihs only, the shortest
+  chain only, minimum matn similarity. The selected hadith always stays.
+- **Kept:** المدار highlight (toggle), focus mode on a narrator (routes through
+  it; the rest fades), dashed borders for uncertain merges.
+- **Compare the wording of two routes:** word diff between their matns
+  (new `action=compare`, `engine.compare_matn`; both texts kept verbatim,
+  compared after normalization); the two routes are drawn in red and green.
+- **Export PNG** (full tree, 2×) and a **shareable deep link**: filters,
+  focused narrator and compared routes live in the URL
+  (`?comp=&books=&sahih=1&short=1&sim=&mudar=0&focus=&cmp=`).
+- **Legend** explains every symbol, including focus, search hit and
+  comparison colours. **Routes as text** list for screen readers.
+- Fixes: Arabic labels were clipped. Cytoscape measured them before the web
+  font loaded and drew centred text shifted under the inherited RTL
+  direction; labels are now measured by Sanad and the canvas is LTR (Arabic
+  still shapes correctly).
+- Checked with an interactive Playwright script: 17 checks (search, filters,
+  deep-link restore, compare, full screen, PNG, share, minimap, mobile
+  overflow), no page errors.

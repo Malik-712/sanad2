@@ -303,6 +303,21 @@ def word_diff(user_text, source_text, focus=False, context=8):
     return ops
 
 
+def compare_matn(a_text, b_text):
+    """Word diff between two source texts, both kept verbatim.
+    Words are compared after normalization and prefix stripping, so only real
+    wording differences show (not diacritics or spelling variants)."""
+    a_orig, b_orig = (a_text or "").split(), (b_text or "").split()
+    a = [_stem(normalize(w)) for w in a_orig]
+    b = [_stem(normalize(w)) for w in b_orig]
+    sm = difflib.SequenceMatcher(a=a, b=b, autojunk=False)
+    ops = []
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        ops.append({"t": tag, "a": " ".join(a_orig[i1:i2]), "b": " ".join(b_orig[j1:j2])})
+    same = sum(i2 - i1 for tag, i1, i2, _, _ in sm.get_opcodes() if tag == "equal")
+    return {"ops": ops, "shared_words": same, "a_words": len(a), "b_words": len(b)}
+
+
 # ------------------------------------------------------------- hadith + tree
 def routes_of(h):
     """All routes of a hadith (v1 data), or the single v0 chain."""
@@ -354,6 +369,12 @@ def isnad_words(h):
                 if kinds[k] != "m":
                     kinds[k] = "n"
     return [[w, k] for w, k in zip(words, kinds)]
+
+
+def hadith_record(hid):
+    d = data()
+    i = d["by_id"].get(hid)
+    return d["hadiths"][i] if i is not None else None
 
 
 def hadith(hid):

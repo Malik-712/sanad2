@@ -4,6 +4,7 @@ GET /api/sanad?action=search&q=...&mode=auto|verify|topic&book=...
 GET /api/sanad?action=hadith&id=bukhari-1
 GET /api/sanad?action=tree&id=bukhari-1
 GET /api/sanad?action=diff&id=bukhari-1&q=...
+GET /api/sanad?action=compare&a=bukhari-1&b=muslim-4927   (wording of two narrations)
 GET /api/sanad?action=health
 """
 import json
@@ -63,6 +64,14 @@ def route(params):
             if not h:
                 return 404, {"error": NOT_FOUND}
             return 200, {"diff": engine.word_diff(params.get("q", "")[:MAX_QUERY], h["matn"], focus=True)}
+    if action == "compare":
+        a, b = _id({"id": params.get("a", "")}), _id({"id": params.get("b", "")})
+        if not a or not b:
+            return 400, {"error": "رقم الحديث غير صالح."}
+        ha, hb = engine.hadith_record(a), engine.hadith_record(b)
+        if not ha or not hb:
+            return 404, {"error": NOT_FOUND}
+        return 200, {"a": engine.card(ha), "b": engine.card(hb), "diff": engine.compare_matn(ha["matn"], hb["matn"])}
     if action == "health":
         d = engine.data()
         return 200, {"ok": True, "hadiths": len(d["hadiths"])}
