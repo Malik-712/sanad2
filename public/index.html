@@ -1,39 +1,42 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>سند — تحقّق من الحديث قبل أن تنشره</title>
+  <title>سند | تحقّق من الحديث قبل أن تنشره</title>
   <meta name="description" content="الصق نصًا يُنسب إلى النبي ﷺ، فيخبرك سند هل هو موجود في الكتب الستة، وأين، وبأي لفظ، ويعرض شجرة طرقه. كل ما يُعرض منقول من مصدره.">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111513" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fdfdfb">
   <script src="/js/theme.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/vendor/fonts/readex-pro-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/vendor/fonts/readex-pro-arabic-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/vendor/fonts/amiri-arabic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
   <a class="skip" href="#app">انتقل إلى المحتوى</a>
   <header class="top">
-    <a class="brand" href="/" data-link aria-label="سند، الصفحة الرئيسة">
-      <svg class="mark" viewBox="0 0 40 30" aria-hidden="true">
-        <path class="base" d="M3 25 H37"/>
-        <path class="stem" d="M31 25 V12 M20 25 V9 M9 25 V14"/>
-        <circle class="node first" cx="31" cy="8" r="4"/>
-        <circle class="node" cx="20" cy="5" r="4"/>
-        <circle class="node" cx="9" cy="10" r="4"/>
-      </svg>
-      <span class="word">سند</span>
-    </a>
-    <nav aria-label="القائمة الرئيسة">
-      <a href="/" data-link data-nav="home">تحقّق</a>
-      <a href="/about" data-link data-nav="about">كيف يعمل سند؟</a>
-      <a href="/about/sources" data-link data-nav="sources">المصادر</a>
-      <button class="theme-btn" type="button" id="theme" aria-label="تبديل المظهر"></button>
-    </nav>
+    <div class="in">
+      <a class="brand" href="/" data-link aria-label="سند، الصفحة الرئيسة">
+        <svg class="mark" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+          <rect width="200" height="200" rx="24" fill="#0E4B3B"/>
+          <path transform="translate(23 37) scale(14)" fill="#F5F2EB" d="M0 2H3V8H4V2H5V8H6V2H7V8H8V2H9V8H10V2H11V9H0V8H2V3H0Z M4 0H5V1H4Z"/>
+        </svg>
+        <span class="word" lang="en" dir="ltr" aria-hidden="true">SANAD</span>
+      </a>
+      <div class="end">
+        <nav class="nav" aria-label="القائمة الرئيسة">
+          <a href="/" data-link data-nav="home">تحقّق</a>
+          <a href="/about" data-link data-nav="about">كيف يعمل سند؟</a>
+          <a href="/about/sources" data-link data-nav="sources">المصادر</a>
+        </nav>
+        <div class="theme">
+          <button class="icon-btn" type="button" id="theme" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-menu"></button>
+          <div class="menu" id="theme-menu" role="menu" aria-label="المظهر" hidden></div>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main id="app" tabindex="-1"></main>

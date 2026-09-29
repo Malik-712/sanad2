@@ -1,7 +1,10 @@
-/* Applies the saved theme before first paint (no inline scripts: CSP). */
+/* Applies the saved theme before first paint (no inline scripts: CSP).
+   Light by default; "auto" follows the system. */
 (function () {
+  var t = "light";
   try {
-    var t = localStorage.getItem("sanad-theme");
-    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
-  } catch (e) { /* storage unavailable: follow the system */ }
+    var s = localStorage.getItem("sanad-theme");
+    if (s === "light" || s === "dark" || s === "auto") t = s;
+  } catch (e) { /* storage unavailable: stay light */ }
+  document.documentElement.setAttribute("data-theme", t);
 })();

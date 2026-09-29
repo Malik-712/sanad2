@@ -1,28 +1,35 @@
 /* /about/sources: every data source, what was taken, how, and its licence. */
-import { esc, api, safeUrl } from "./ui.js";
+import { esc, api, safeUrl, skeleton } from "./ui.js";
 
 const STATUS = { used: "مستخدم", not_used: "غير مستخدم", derived: "مشتق من غيره" };
+const known = (s) => s && s.trim() && s.trim() !== "—";
 
 export async function sourcesPage(app) {
-  document.title = "المصادر والتراخيص — سند";
-  app.innerHTML = `<div class="loading">جارٍ التحميل…</div>`;
+  document.title = "المصادر والتراخيص | سند";
+  app.innerHTML = `<div class="sources">${skeleton("جارٍ التحميل…", [40, 100, 90, 100, 70])}</div>`;
   const c = await api({ action: "sources" });
   const names = Object.fromEntries(c.sources.map((s) => [s.id, s.name]));
   app.innerHTML = `
-  <article class="prose" style="max-width:60rem">
+  <article class="sources">
     <h1>المصادر والتراخيص</h1>
     <p>هذه كل المصادر التي يأخذ منها سند، وما أخذه من كل مصدر، وكيف أخذه، وترخيصه. وكل معلومة دينية في الصفحات معها صندوق «كيف حصلنا على هذه المعلومة؟» يذكر مصدرها بالتفصيل.</p>
 
     <h2>المصادر</h2>
-    <table class="src-table">
-      <thead><tr><th>المصدر</th><th>الحالة</th><th>ما أخذنا</th><th>كيف استخرجناه</th><th>الترخيص</th></tr></thead>
-      <tbody>${c.sources.map((s) => `<tr>
-        <td data-h="المصدر"><a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.name)}</a><div class="meter">تاريخ الأخذ: ${esc(s.retrieved)}</div></td>
-        <td data-h="الحالة"><span class="tag">${esc(STATUS[s.status] || s.status)}</span></td>
-        <td data-h="ما أخذنا">${esc(s.taken)}</td>
-        <td data-h="كيف استخرجناه">${esc(s.how)}${s.notes ? `<div class="meter">${esc(s.notes)}</div>` : ""}</td>
-        <td data-h="الترخيص">${esc(s.license)}</td></tr>`).join("")}</tbody>
-    </table>
+    <div class="src-list">${c.sources.map((s) => `
+      <section class="src" aria-label="${esc(s.name)}">
+        <div class="src-head">
+          <a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.name)}</a>
+          <span class="tag${s.status === "used" ? " ok" : ""}">${esc(STATUS[s.status] || s.status)}</span>
+          ${known(s.retrieved) ? `<span class="meta">تاريخ الأخذ: ${esc(s.retrieved)}</span>` : ""}
+        </div>
+        <dl class="src-grid">
+          <div><dt>ما أخذنا</dt><dd>${esc(s.taken)}</dd></div>
+          <div><dt>كيف استخرجناه</dt><dd>${esc(s.how)}</dd></div>
+          <div><dt>الترخيص</dt><dd>${esc(s.license)}</dd></div>
+        </dl>
+        ${s.notes ? `<p class="meta notes">${esc(s.notes)}</p>` : ""}
+      </section>`).join("")}
+    </div>
 
     <h2>كل حقل يُعرض ومن أين جاء</h2>
     <table class="src-table">

@@ -16,8 +16,8 @@ import sanad as api  # noqa: E402
 STATIC_HEADERS = {
     **api.SECURITY_HEADERS,
     "Content-Security-Policy": (
-        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-        "font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; "
+        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
+        "font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; "
         "frame-ancestors 'none'; base-uri 'self'; form-action 'self'"),
 }
 

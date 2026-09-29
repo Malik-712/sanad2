@@ -259,3 +259,50 @@ against bots, and Sanad does not work around that.
   mapping, and the new UI font.
 - Final checks: `run_eval.py` 22/22, 0 false "exists"; 56 unit tests pass
   offline; parser metrics as in the Phase 1 table (unchanged by later phases).
+
+---
+
+## Phase 6 — UI redesign on one design system (2026-09-29)
+
+Front end only; the API, the data and every religious text are unchanged.
+
+### Design system (`public/style.css`, rewritten)
+- Tokens for colour, type, spacing, radius, elevation and motion; light is the
+  default, dark is defined alongside; the theme button is a menu
+  (فاتح / داكن / حسب النظام). Every text/background pair was checked
+  (WCAG AA in both themes).
+- Brand from the new logo: the square-Kufic mark in the header and favicon,
+  emerald as the single accent (actions, links, active nav, selection, "found").
+  Rubric red stays only for transmission words; bronze marks the computed
+  "near" state and the tree's branch point; "not found" stays neutral.
+  Colour never encodes a grade or a judgment on a narrator.
+- Two voices: Amiri only for words that come from the sources (matn, isnad,
+  quoted verdicts); Readex Pro for everything Sanad says.
+- Shape: 4px on controls and tags, 8px on containers, no pills; flat surfaces,
+  shadows only on floating layers. Skeleton loaders are blank bars.
+- Fonts are self-hosted (`public/vendor/fonts`, OFL, with licences); the CSP no
+  longer allows fonts.googleapis.com / fonts.gstatic.com. Icons are Tabler
+  Icons (MIT), generated into `public/js/icons.js`.
+
+### Pages
+- Hadith page: the tree button is in the page header (it was below ~2.5
+  screens of grades); grades moved into the main column as an aligned,
+  attributed list (first 4, the rest behind a disclosure); the sidebar is short
+  enough to stay sticky.
+- Provenance boxes name the fact they document (المتن، الحكم، الإسناد…) when
+  a block shows several.
+- Tree: the search box and tools no longer cover the Prophet ﷺ node; the view
+  opens with the root in view at every width; zoom controls moved to a bottom
+  corner; on narrow screens the title and counts sit above the canvas;
+  selection is emerald, the second compared route bronze (the branch point is
+  not highlighted while comparing). Fixed narrator search normalisation (the
+  diacritics class is now written as ASCII escapes).
+- Sources page: one card per source instead of a five-column table.
+- Arabic number agreement («14 رواية»); page titles use « | ».
+
+### Checks
+- 56 unit tests pass; `run_eval.py` 22/22, 0 false "exists".
+- Browser QA at 1440, 768 and 375 px, light and dark: no horizontal overflow,
+  no third-party requests, no console errors; search, results, hadith, tree
+  (search, focus, compare, filters, URL state, fullscreen), sources, 404 and
+  error states.

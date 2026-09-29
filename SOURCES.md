@@ -28,10 +28,12 @@
 | [Cytoscape.js](https://js.cytoscape.org/) | 3.30.2 | MIT |
 | [dagre](https://github.com/dagrejs/dagre) | 0.8.5 | MIT |
 | [cytoscape-dagre](https://github.com/cytoscape/cytoscape.js-dagre) | 2.5.0 | MIT |
+| [Tabler Icons](https://tabler.io/icons) (مسارات الأيقونات في `public/js/icons.js`) | 3.48.0 | MIT |
 
 ## خطوط
 
-- Amiri (نصوص الحديث) و Readex Pro (الواجهة) من Google Fonts (SIL Open Font License 1.1).
+- Amiri (نصوص المصادر فقط)، وReadex Pro (الواجهة)، وJost (كلمة SANAD في الشعار). كلها SIL Open Font License 1.1.
+- ملفات woff2 من حزم [Fontsource](https://fontsource.org/) 5.3.0، مضمّنة في `public/vendor/fonts` مع ملف ترخيص كل خط؛ لا تُحمَّل من Google Fonts.
 
 ## أدوات بناء البيانات والاختبار
 
