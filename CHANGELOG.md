@@ -316,3 +316,37 @@ Front end only; the API, the data and every religious text are unchanged.
 - Header order swapped: the menu, with «تحقّق» first, now sits on the right,
   and the logo sits on the far left. Both are aligned to the page gutter and
   vertically centred in the 64 px bar.
+
+---
+
+## Search evaluation harness (2026-09-29)
+
+No change to search, data or the UI. No model, embedding or generative step.
+
+- `evaluation/cases.json`: 76 cases in one format (see `evaluation/README.md`):
+  18 exact texts, 29 partial quotes, 18 with spelling mistakes, 3 wording
+  variations, 8 texts labelled not in the six books.
+  - The 22 v0 texts are kept as they were (`evaluation/v0_smoke_cases.json`,
+    renamed from `smoke_cases.json`) and migrated with their original labels.
+    11 are found word for word in the corpus and are ranked. The other 3
+    (`variation`) and the 8 absent texts wait for a human reviewer
+    (`status: needs_review`), with candidate records listed only as leads.
+  - 54 cases are sampled from the corpus by a fixed hash: the whole matn, 8
+    words from its middle, or 10 words with two mechanical typos.
+  - Expected records are only those that contain the query word for word
+    (`evaluation/corpus_check.py`, separate from the engine), each with a full
+    provenance record quoting the original words. Nothing picks a hadith
+    number by judgment. Reviewed cases are kept on rebuild.
+- `evaluation/harness.py` + `run_eval.py`: recall@1/3/5/10, MRR, verdict
+  precision and recall, top-1 precision, false "exists", per category, with a
+  plain legend and a list of every case not answered perfectly.
+- `tests/test_eval.py` (11 tests, pytest or unittest): case-file integrity
+  (expected records re-checked against the corpus, verbatim quotes, complete
+  provenance) and the regression gate: false "exists" must be 0, and every
+  floor in `evaluation/thresholds.json` must hold.
+- Results: exact R@1 100%; partial R@1 97%; spelling R@1 72%, R@3 100%;
+  overall R@1 91%, MRR 0.94, verdict precision 100%, false "exists" 0 of 8.
+- Known gaps: `v0-14` («من قال لا اله الا الله دخل الجنة») is marked found, but
+  its only word-for-word record is not in the top 10. The wording-variation
+  category has no ranked cases until a reviewer fills them.
+- `requirements-dev.txt`: pytest.

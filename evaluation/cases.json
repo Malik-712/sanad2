@@ -1,0 +1,2976 @@
+{
+ "format": "sanad-eval-cases/1",
+ "about": "حالات تقييم البحث. انظر evaluation/README.md لمعنى كل حقل.",
+ "cases": [
+  {
+   "id": "v0-01",
+   "category": "partial",
+   "query": "انما الاعمال بالنيات وانما لكل امرئ ما نوى",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-1",
+    "abudawud-2067"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-1",
+     "book_title": "صحيح البخاري",
+     "number": "1",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter1.csv",
+     "quote": "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى،",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "abudawud-2067",
+     "book_title": "سنن أبي داود",
+     "number": "2067",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter13.csv",
+     "quote": "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-02",
+   "category": "variation",
+   "query": "من سلك طريق يلتمس علم سهل الله له طريق للجنه",
+   "expect": "exists",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "review": {
+    "why": "النص ليس في أي سجل من المدونة بهذه الألفاظ وهذا الترتيب؛ يلزم مراجع يحدد السجلات المقصودة.",
+    "candidates": [
+     {
+      "id": "ibnmajah-223",
+      "book_title": "سنن ابن ماجه",
+      "number": "223",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter0.csv",
+      "query_words_matched_in_order": 0.6
+     },
+     {
+      "id": "ibnmajah-225",
+      "book_title": "سنن ابن ماجه",
+      "number": "225",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter0.csv",
+      "query_words_matched_in_order": 0.6
+     },
+     {
+      "id": "muslim-6719",
+      "book_title": "صحيح مسلم",
+      "number": "6719",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter48.csv",
+      "query_words_matched_in_order": 0.6
+     }
+    ],
+    "candidates_note": "مرشحون بعدد الكلمات المشتركة فقط، ليسوا جوابًا."
+   }
+  },
+  {
+   "id": "v0-03",
+   "category": "partial",
+   "query": "طلب العلم فريضة على كل مسلم",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "ibnmajah-224"
+   ],
+   "evidence": [
+    {
+     "id": "ibnmajah-224",
+     "book_title": "سنن ابن ماجه",
+     "number": "224",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter0.csv",
+     "quote": "طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-04",
+   "category": "partial",
+   "query": "الدين النصيحة",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-195",
+    "abudawud-4811",
+    "tirmidhi-1993",
+    "nasai-4202",
+    "nasai-4203",
+    "nasai-4204",
+    "nasai-4205"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-195",
+     "book_title": "صحيح مسلم",
+     "number": "195",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter1.csv",
+     "quote": "الدِّينُ النَّصِيحَةُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "abudawud-4811",
+     "book_title": "سنن أبي داود",
+     "number": "4811",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter43.csv",
+     "quote": "الدِّينَ النَّصِيحَةُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "tirmidhi-1993",
+     "book_title": "جامع الترمذي",
+     "number": "1993",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter27.csv",
+     "quote": "الدِّينُ النَّصِيحَةُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-4202",
+     "book_title": "سنن النسائي",
+     "number": "4202",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter39.csv",
+     "quote": "الدِّينُ النَّصِيحَةُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-4203",
+     "book_title": "سنن النسائي",
+     "number": "4203",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter39.csv",
+     "quote": "الدِّينُ النَّصِيحَةُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-4204",
+     "book_title": "سنن النسائي",
+     "number": "4204",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter39.csv",
+     "quote": "الدِّينَ النَّصِيحَةُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-4205",
+     "book_title": "سنن النسائي",
+     "number": "4205",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter39.csv",
+     "quote": "الدِّينُ النَّصِيحَةُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-05",
+   "category": "variation",
+   "query": "تبسمك في وجه اخيك صدقة",
+   "expect": "exists",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "review": {
+    "why": "النص ليس في أي سجل من المدونة بهذه الألفاظ وهذا الترتيب؛ يلزم مراجع يحدد السجلات المقصودة.",
+    "candidates": [
+     {
+      "id": "tirmidhi-2023",
+      "book_title": "جامع الترمذي",
+      "number": "2023",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter27.csv",
+      "query_words_matched_in_order": 1.0
+     },
+     {
+      "id": "abudawud-2829",
+      "book_title": "سنن أبي داود",
+      "number": "2829",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter20.csv",
+      "query_words_matched_in_order": 0.6
+     },
+     {
+      "id": "bukhari-3094",
+      "book_title": "صحيح البخاري",
+      "number": "3094",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter57.csv",
+      "query_words_matched_in_order": 0.6
+     }
+    ],
+    "candidates_note": "مرشحون بعدد الكلمات المشتركة فقط، ليسوا جوابًا."
+   }
+  },
+  {
+   "id": "v0-06",
+   "category": "partial",
+   "query": "خيركم من تعلم القران وعلمه",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-5027",
+    "abudawud-1318",
+    "tirmidhi-3042",
+    "tirmidhi-3045"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-5027",
+     "book_title": "صحيح البخاري",
+     "number": "5027",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter66.csv",
+     "quote": "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "abudawud-1318",
+     "book_title": "سنن أبي داود",
+     "number": "1318",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter8.csv",
+     "quote": "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "tirmidhi-3042",
+     "book_title": "جامع الترمذي",
+     "number": "3042",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter45.csv",
+     "quote": "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "tirmidhi-3045",
+     "book_title": "جامع الترمذي",
+     "number": "3045",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter45.csv",
+     "quote": "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-07",
+   "category": "partial",
+   "query": "من غشنا فليس منا",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-281",
+    "ibnmajah-2236"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-281",
+     "book_title": "صحيح مسلم",
+     "number": "281",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter1.csv",
+     "quote": "وَمَنْ غَشَّنَا فَلَيْسَ مِنَّا",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "ibnmajah-2236",
+     "book_title": "سنن ابن ماجه",
+     "number": "2236",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter12.csv",
+     "quote": "مَنْ غَشَّنَا فَلَيْسَ مِنَّا",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-08",
+   "category": "partial",
+   "query": "لا ضرر ولا ضرار",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "ibnmajah-2354",
+    "ibnmajah-2355"
+   ],
+   "evidence": [
+    {
+     "id": "ibnmajah-2354",
+     "book_title": "سنن ابن ماجه",
+     "number": "2354",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter13.csv",
+     "quote": "لاَ ضَرَرَ وَلاَ ضِرَارَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "ibnmajah-2355",
+     "book_title": "سنن ابن ماجه",
+     "number": "2355",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter13.csv",
+     "quote": "لاَ ضَرَرَ وَلاَ ضِرَارَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-09",
+   "category": "partial",
+   "query": "الكلمة الطيبة صدقة",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-2979",
+    "muslim-2276"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-2979",
+     "book_title": "صحيح البخاري",
+     "number": "2979",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter56.csv",
+     "quote": "وَالْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ،",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "muslim-2276",
+     "book_title": "صحيح مسلم",
+     "number": "2276",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter12.csv",
+     "quote": "وَالْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-10",
+   "category": "partial",
+   "query": "من صام رمضان ايمانا واحتسابا غفر له ما تقدم من ذنبه",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-38",
+    "bukhari-1901",
+    "bukhari-2014",
+    "muslim-1758",
+    "abudawud-1238",
+    "nasai-2203",
+    "nasai-2204",
+    "nasai-2205",
+    "ibnmajah-1641"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-38",
+     "book_title": "صحيح البخاري",
+     "number": "38",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter2.csv",
+     "quote": "مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "bukhari-1901",
+     "book_title": "صحيح البخاري",
+     "number": "1901",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter30.csv",
+     "quote": "وَمَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "bukhari-2014",
+     "book_title": "صحيح البخاري",
+     "number": "2014",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter32.csv",
+     "quote": "مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ،",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "muslim-1758",
+     "book_title": "صحيح مسلم",
+     "number": "1758",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter6.csv",
+     "quote": "مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "abudawud-1238",
+     "book_title": "سنن أبي داود",
+     "number": "1238",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter6.csv",
+     "quote": "مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-2203",
+     "book_title": "سنن النسائي",
+     "number": "2203",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter22.csv",
+     "quote": "مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-2204",
+     "book_title": "سنن النسائي",
+     "number": "2204",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter22.csv",
+     "quote": "مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-2205",
+     "book_title": "سنن النسائي",
+     "number": "2205",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter22.csv",
+     "quote": "مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "ibnmajah-1641",
+     "book_title": "سنن ابن ماجه",
+     "number": "1641",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter7.csv",
+     "quote": "مَنْ صَامَ رَمَضَانَ إِيمَانًا وَاحْتِسَابًا غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-11",
+   "category": "partial",
+   "query": "من كان يؤمن بالله واليوم الاخر فليقل خيرا او ليصمت",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-6018",
+    "bukhari-6019",
+    "bukhari-6131",
+    "bukhari-6132",
+    "bukhari-6134",
+    "bukhari-6475",
+    "muslim-172",
+    "muslim-4435",
+    "abudawud-5021",
+    "tirmidhi-2590"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-6018",
+     "book_title": "صحيح البخاري",
+     "number": "6018",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter78.csv",
+     "quote": "وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "bukhari-6019",
+     "book_title": "صحيح البخاري",
+     "number": "6019",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter78.csv",
+     "quote": "وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "bukhari-6131",
+     "book_title": "صحيح البخاري",
+     "number": "6131",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter78.csv",
+     "quote": "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "bukhari-6132",
+     "book_title": "صحيح البخاري",
+     "number": "6132",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter78.csv",
+     "quote": "وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "bukhari-6134",
+     "book_title": "صحيح البخاري",
+     "number": "6134",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter78.csv",
+     "quote": "وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "bukhari-6475",
+     "book_title": "صحيح البخاري",
+     "number": "6475",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter81.csv",
+     "quote": "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا، أَوْ لِيَصْمُتْ،",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "muslim-172",
+     "book_title": "صحيح مسلم",
+     "number": "172",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter1.csv",
+     "quote": "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "muslim-4435",
+     "book_title": "صحيح مسلم",
+     "number": "4435",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter31.csv",
+     "quote": "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "abudawud-5021",
+     "book_title": "سنن أبي داود",
+     "number": "5021",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter43.csv",
+     "quote": "وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "tirmidhi-2590",
+     "book_title": "جامع الترمذي",
+     "number": "2590",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter37.csv",
+     "quote": "وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-12",
+   "category": "variation",
+   "query": "اذا اتاكم من ترضون دينه وخلقه فزوجوه",
+   "expect": "exists",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "review": {
+    "why": "النص ليس في أي سجل من المدونة بهذه الألفاظ وهذا الترتيب؛ يلزم مراجع يحدد السجلات المقصودة.",
+    "candidates": [
+     {
+      "id": "tirmidhi-1085",
+      "book_title": "جامع الترمذي",
+      "number": "1085",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter11.csv",
+      "query_words_matched_in_order": 0.86
+     },
+     {
+      "id": "ibnmajah-1969",
+      "book_title": "سنن ابن ماجه",
+      "number": "1969",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter9.csv",
+      "query_words_matched_in_order": 0.71
+     },
+     {
+      "id": "tirmidhi-1086",
+      "book_title": "جامع الترمذي",
+      "number": "1086",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter11.csv",
+      "query_words_matched_in_order": 0.71
+     }
+    ],
+    "candidates_note": "مرشحون بعدد الكلمات المشتركة فقط، ليسوا جوابًا."
+   }
+  },
+  {
+   "id": "v0-13",
+   "category": "partial",
+   "query": "العلماء ورثة الانبياء",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "abudawud-3507",
+    "tirmidhi-2789"
+   ],
+   "evidence": [
+    {
+     "id": "abudawud-3507",
+     "book_title": "سنن أبي داود",
+     "number": "3507",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter26.csv",
+     "quote": "الْعُلَمَاءَ وَرَثَةُ الأَنْبِيَاءِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "tirmidhi-2789",
+     "book_title": "جامع الترمذي",
+     "number": "2789",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter41.csv",
+     "quote": "الْعُلَمَاءَ وَرَثَةُ الأَنْبِيَاءِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-14",
+   "category": "partial",
+   "query": "من قال لا اله الا الله دخل الجنة",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "tirmidhi-2745"
+   ],
+   "evidence": [
+    {
+     "id": "tirmidhi-2745",
+     "book_title": "جامع الترمذي",
+     "number": "2745",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter40.csv",
+     "quote": "مَنْ قَالَ لاَ إِلَهَ إِلاَّ اللَّهُ دَخَلَ الْجَنَّةَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   }
+  },
+  {
+   "id": "v0-15",
+   "category": "not_in_six_books",
+   "query": "اطلبوا العلم ولو في الصين",
+   "expect": "absent",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "check": {
+    "contained_in_any_record": false,
+    "closest_records": [
+     {
+      "id": "tirmidhi-773",
+      "book_title": "جامع الترمذي",
+      "number": "773",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter8.csv",
+      "query_words_matched_in_order": 0.6
+     },
+     {
+      "id": "bukhari-7",
+      "book_title": "صحيح البخاري",
+      "number": "7",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter1.csv",
+      "query_words_matched_in_order": 0.4
+     },
+     {
+      "id": "muslim-3018",
+      "book_title": "صحيح مسلم",
+      "number": "3018",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter15.csv",
+      "query_words_matched_in_order": 0.4
+     }
+    ],
+    "note": "لا يوجد سجل يحوي هذه الكلمات بترتيبها. كون النص ليس في الكتب الستة بأي لفظ يحتاج تأكيد مراجع."
+   },
+   "review": {
+    "why": "تأكيد أن النص ليس في الكتب الستة بلفظ آخر."
+   }
+  },
+  {
+   "id": "v0-16",
+   "category": "not_in_six_books",
+   "query": "النظافة من الايمان",
+   "expect": "absent",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "check": {
+    "contained_in_any_record": false,
+    "closest_records": [
+     {
+      "id": "abudawud-1014",
+      "book_title": "سنن أبي داود",
+      "number": "1014",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter2.csv",
+      "query_words_matched_in_order": 0.67
+     },
+     {
+      "id": "abudawud-1448",
+      "book_title": "سنن أبي داود",
+      "number": "1448",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter9.csv",
+      "query_words_matched_in_order": 0.67
+     },
+     {
+      "id": "abudawud-2122",
+      "book_title": "سنن أبي داود",
+      "number": "2122",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter13.csv",
+      "query_words_matched_in_order": 0.67
+     }
+    ],
+    "note": "لا يوجد سجل يحوي هذه الكلمات بترتيبها. كون النص ليس في الكتب الستة بأي لفظ يحتاج تأكيد مراجع."
+   },
+   "review": {
+    "why": "تأكيد أن النص ليس في الكتب الستة بلفظ آخر."
+   }
+  },
+  {
+   "id": "v0-17",
+   "category": "not_in_six_books",
+   "query": "حب الوطن من الايمان",
+   "expect": "absent",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "check": {
+    "contained_in_any_record": false,
+    "closest_records": [
+     {
+      "id": "abudawud-1014",
+      "book_title": "سنن أبي داود",
+      "number": "1014",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter2.csv",
+      "query_words_matched_in_order": 0.5
+     },
+     {
+      "id": "abudawud-1448",
+      "book_title": "سنن أبي داود",
+      "number": "1448",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter9.csv",
+      "query_words_matched_in_order": 0.5
+     },
+     {
+      "id": "abudawud-2122",
+      "book_title": "سنن أبي داود",
+      "number": "2122",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter13.csv",
+      "query_words_matched_in_order": 0.5
+     }
+    ],
+    "note": "لا يوجد سجل يحوي هذه الكلمات بترتيبها. كون النص ليس في الكتب الستة بأي لفظ يحتاج تأكيد مراجع."
+   },
+   "review": {
+    "why": "تأكيد أن النص ليس في الكتب الستة بلفظ آخر."
+   }
+  },
+  {
+   "id": "v0-18",
+   "category": "not_in_six_books",
+   "query": "الجنة تحت اقدام الامهات",
+   "expect": "absent",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "check": {
+    "contained_in_any_record": false,
+    "closest_records": [
+     {
+      "id": "abudawud-2497",
+      "book_title": "سنن أبي داود",
+      "number": "2497",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter15.csv",
+      "query_words_matched_in_order": 0.5
+     },
+     {
+      "id": "bukhari-2815",
+      "book_title": "صحيح البخاري",
+      "number": "2815",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter56.csv",
+      "query_words_matched_in_order": 0.5
+     },
+     {
+      "id": "bukhari-2956",
+      "book_title": "صحيح البخاري",
+      "number": "2956",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter56.csv",
+      "query_words_matched_in_order": 0.5
+     }
+    ],
+    "note": "لا يوجد سجل يحوي هذه الكلمات بترتيبها. كون النص ليس في الكتب الستة بأي لفظ يحتاج تأكيد مراجع."
+   },
+   "review": {
+    "why": "تأكيد أن النص ليس في الكتب الستة بلفظ آخر."
+   }
+  },
+  {
+   "id": "v0-19",
+   "category": "not_in_six_books",
+   "query": "اختلاف امتي رحمة",
+   "expect": "absent",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "check": {
+    "contained_in_any_record": false,
+    "closest_records": [
+     {
+      "id": "abudawud-4526",
+      "book_title": "سنن أبي داود",
+      "number": "4526",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter42.csv",
+      "query_words_matched_in_order": 0.67
+     },
+     {
+      "id": "muslim-2040",
+      "book_title": "صحيح مسلم",
+      "number": "2040",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter9.csv",
+      "query_words_matched_in_order": 0.67
+     },
+     {
+      "id": "abudawud-4632",
+      "book_title": "سنن أبي داود",
+      "number": "4632",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter42.csv",
+      "query_words_matched_in_order": 0.33
+     }
+    ],
+    "note": "لا يوجد سجل يحوي هذه الكلمات بترتيبها. كون النص ليس في الكتب الستة بأي لفظ يحتاج تأكيد مراجع."
+   },
+   "review": {
+    "why": "تأكيد أن النص ليس في الكتب الستة بلفظ آخر."
+   }
+  },
+  {
+   "id": "v0-20",
+   "category": "not_in_six_books",
+   "query": "الصلاة عماد الدين",
+   "expect": "absent",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "check": {
+    "contained_in_any_record": false,
+    "closest_records": [
+     {
+      "id": "abudawud-1372",
+      "book_title": "سنن أبي داود",
+      "number": "1372",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter8.csv",
+      "query_words_matched_in_order": 0.67
+     },
+     {
+      "id": "abudawud-1421",
+      "book_title": "سنن أبي داود",
+      "number": "1421",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter8.csv",
+      "query_words_matched_in_order": 0.67
+     },
+     {
+      "id": "abudawud-779",
+      "book_title": "سنن أبي داود",
+      "number": "779",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter2.csv",
+      "query_words_matched_in_order": 0.67
+     }
+    ],
+    "note": "لا يوجد سجل يحوي هذه الكلمات بترتيبها. كون النص ليس في الكتب الستة بأي لفظ يحتاج تأكيد مراجع."
+   },
+   "review": {
+    "why": "تأكيد أن النص ليس في الكتب الستة بلفظ آخر."
+   }
+  },
+  {
+   "id": "v0-21",
+   "category": "not_in_six_books",
+   "query": "استفت قلبك",
+   "expect": "absent",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "check": {
+    "contained_in_any_record": false,
+    "closest_records": [
+     {
+      "id": "abudawud-3448",
+      "book_title": "سنن أبي داود",
+      "number": "3448",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter25.csv",
+      "query_words_matched_in_order": 0.5
+     },
+     {
+      "id": "bukhari-4480",
+      "book_title": "صحيح البخاري",
+      "number": "4480",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter65.csv",
+      "query_words_matched_in_order": 0.5
+     },
+     {
+      "id": "bukhari-5030",
+      "book_title": "صحيح البخاري",
+      "number": "5030",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter66.csv",
+      "query_words_matched_in_order": 0.5
+     }
+    ],
+    "note": "لا يوجد سجل يحوي هذه الكلمات بترتيبها. كون النص ليس في الكتب الستة بأي لفظ يحتاج تأكيد مراجع."
+   },
+   "review": {
+    "why": "تأكيد أن النص ليس في الكتب الستة بلفظ آخر."
+   }
+  },
+  {
+   "id": "v0-22",
+   "category": "not_in_six_books",
+   "query": "اطلب العلم من المهد الى اللحد",
+   "expect": "absent",
+   "status": "needs_review",
+   "relevant": [],
+   "evidence": [],
+   "origin": {
+    "kind": "v0_smoke",
+    "label_source": "مجموعة v0 (evaluation/v0_smoke_cases.json): التسمية موجود/غير موجود كما كُتبت فيها"
+   },
+   "check": {
+    "contained_in_any_record": false,
+    "closest_records": [
+     {
+      "id": "abudawud-3004",
+      "book_title": "سنن أبي داود",
+      "number": "3004",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter21.csv",
+      "query_words_matched_in_order": 0.5
+     },
+     {
+      "id": "abudawud-4317",
+      "book_title": "سنن أبي داود",
+      "number": "4317",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter40.csv",
+      "query_words_matched_in_order": 0.5
+     },
+     {
+      "id": "abudawud-4879",
+      "book_title": "سنن أبي داود",
+      "number": "4879",
+      "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter43.csv",
+      "query_words_matched_in_order": 0.5
+     }
+    ],
+    "note": "لا يوجد سجل يحوي هذه الكلمات بترتيبها. كون النص ليس في الكتب الستة بأي لفظ يحتاج تأكيد مراجع."
+   },
+   "review": {
+    "why": "تأكيد أن النص ليس في الكتب الستة بلفظ آخر."
+   }
+  },
+  {
+   "id": "exact-bukhari-4508",
+   "category": "exact",
+   "query": "سَمِعْتُ الْبَرَاءَ رضى الله عنه لَمَّا نَزَلَ صَوْمُ رَمَضَانَ كَانُوا لاَ يَقْرَبُونَ النِّسَاءَ رَمَضَانَ كُلَّهُ، وَكَانَ رِجَالٌ يَخُونُونَ أَنْفُسَهُمْ، فَأَنْزَلَ اللَّهُ { عَلِمَ اللَّهُ أَنَّكُمْ كُنْتُمْ تَخْتَانُونَ أَنْفُسَكُمْ فَتَابَ عَلَيْكُمْ وَعَفَا عَنْكُمْ } .",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-4508"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-4508",
+     "book_title": "صحيح البخاري",
+     "number": "4508",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter65.csv",
+     "quote": "سَمِعْتُ الْبَرَاءَ رضى الله عنه لَمَّا نَزَلَ صَوْمُ رَمَضَانَ كَانُوا لاَ يَقْرَبُونَ النِّسَاءَ رَمَضَانَ كُلَّهُ، وَكَانَ رِجَالٌ يَخُونُونَ أَنْفُسَهُمْ، فَأَنْزَلَ اللَّهُ ‏{‏عَلِمَ اللَّهُ أَنَّكُمْ كُنْتُمْ تَخْتَانُونَ أَنْفُسَكُمْ فَتَابَ عَلَيْكُمْ وَعَفَا عَنْكُمْ‏}‏‏.‏",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "bukhari-4508",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-bukhari-7407",
+   "category": "exact",
+   "query": "عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ مَا بَعَثَ اللَّهُ مِنْ نَبِيٍّ إِلاَّ أَنْذَرَ قَوْمَهُ الأَعْوَرَ الْكَذَّابَ، إِنَّهُ أَعْوَرُ، وَإِنَّ رَبَّكُمْ لَيْسَ بِأَعْوَرَ، مَكْتُوبٌ بَيْنَ عَيْنَيْهِ كَافِرٌ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-7407"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-7407",
+     "book_title": "صحيح البخاري",
+     "number": "7407",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter97.csv",
+     "quote": "عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ مَا بَعَثَ اللَّهُ مِنْ نَبِيٍّ إِلاَّ أَنْذَرَ قَوْمَهُ الأَعْوَرَ الْكَذَّابَ، إِنَّهُ أَعْوَرُ، وَإِنَّ رَبَّكُمْ لَيْسَ بِأَعْوَرَ، مَكْتُوبٌ بَيْنَ عَيْنَيْهِ كَافِرٌ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "bukhari-7407",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-bukhari-1959",
+   "category": "exact",
+   "query": "أَفْطَرْنَا عَلَى عَهْدِ النَّبِيِّ صلى الله عليه وسلم يَوْمَ غَيْمٍ، ثُمَّ طَلَعَتِ الشَّمْسُ . قِيلَ لِهِشَامٍ فَأُمِرُوا بِالْقَضَاءِ قَالَ بُدٌّ مِنْ قَضَاءٍ . وَقَالَ مَعْمَرٌ سَمِعْتُ هِشَامًا لاَ أَدْرِي أَقْضَوْا أَمْ لاَ .",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-1959"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-1959",
+     "book_title": "صحيح البخاري",
+     "number": "1959",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter30.csv",
+     "quote": "أَفْطَرْنَا عَلَى عَهْدِ النَّبِيِّ صلى الله عليه وسلم يَوْمَ غَيْمٍ، ثُمَّ طَلَعَتِ الشَّمْسُ‏.‏ قِيلَ لِهِشَامٍ فَأُمِرُوا بِالْقَضَاءِ قَالَ بُدٌّ مِنْ قَضَاءٍ‏.‏ وَقَالَ مَعْمَرٌ سَمِعْتُ هِشَامًا لاَ أَدْرِي أَقْضَوْا أَمْ لاَ‏.‏",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "bukhari-1959",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "partial-bukhari-2866",
+   "category": "partial",
+   "query": "مِنَ الثَّنِيَّةِ إِلَى مَسْجِدِ بَنِي زُرَيْقٍ . وَأَنَّ عَبْدَ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-420",
+    "bukhari-2866",
+    "abudawud-2441",
+    "nasai-3587"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-420",
+     "book_title": "صحيح البخاري",
+     "number": "420",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter8.csv",
+     "quote": "مِنَ الثَّنِيَّةِ إِلَى مَسْجِدِ بَنِي زُرَيْقٍ، وَأَنَّ عَبْدَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "bukhari-2866",
+     "book_title": "صحيح البخاري",
+     "number": "2866",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter56.csv",
+     "quote": "مِنَ الثَّنِيَّةِ إِلَى مَسْجِدِ بَنِي زُرَيْقٍ‏.‏ وَأَنَّ عَبْدَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "abudawud-2441",
+     "book_title": "سنن أبي داود",
+     "number": "2441",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter15.csv",
+     "quote": "مِنَ الثَّنِيَّةِ إِلَى مَسْجِدِ بَنِي زُرَيْقٍ وَإِنَّ عَبْدَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-3587",
+     "book_title": "سنن النسائي",
+     "number": "3587",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter28.csv",
+     "quote": "مِنَ الثَّنِيَّةِ إِلَى مَسْجِدِ بَنِي زُرَيْقٍ وَأَنَّ عَبْدَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "bukhari-2866",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-bukhari-2530",
+   "category": "partial",
+   "query": "هُرَيْرَةَ جَالِسٌ مَعَ النَّبِيِّ صلى الله عليه وسلم فَقَالَ النَّبِيُّ صلى الله عليه وسلم يَا أَبَا",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-2530"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-2530",
+     "book_title": "صحيح البخاري",
+     "number": "2530",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter49.csv",
+     "quote": "هُرَيْرَةَ جَالِسٌ مَعَ النَّبِيِّ صلى الله عليه وسلم فَقَالَ النَّبِيُّ صلى الله عليه وسلم ‏ ‏ يَا أَبَا",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "bukhari-2530",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-bukhari-3248",
+   "category": "partial",
+   "query": "فَعَجِبَ النَّاسُ مِنْهَا، فَقَالَ وَالَّذِي نَفْسُ مُحَمَّدٍ بِيَدِهِ،",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-2615 - 2616",
+    "bukhari-3248",
+    "muslim-6225"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-2615 - 2616",
+     "book_title": "صحيح البخاري",
+     "number": "2615 - 2616",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter51.csv",
+     "quote": "فَعَجِبَ النَّاسُ مِنْهَا فَقَالَ ‏ ‏ وَالَّذِي نَفْسُ مُحَمَّدٍ بِيَدِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "bukhari-3248",
+     "book_title": "صحيح البخاري",
+     "number": "3248",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter59.csv",
+     "quote": "فَعَجِبَ النَّاسُ مِنْهَا، فَقَالَ ‏ ‏ وَالَّذِي نَفْسُ مُحَمَّدٍ بِيَدِهِ،",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "muslim-6225",
+     "book_title": "صحيح مسلم",
+     "number": "6225",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter44.csv",
+     "quote": "فَعَجِبَ النَّاسُ مِنْهَا فَقَالَ وَالَّذِي نَفْسُ مُحَمَّدٍ بِيَدِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "bukhari-3248",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "spelling-bukhari-1400",
+   "category": "spelling",
+   "query": "الذكاه حق المال والله لو منعوني عناقا كانوا يودنها الي",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-1400",
+    "bukhari-6925",
+    "nasai-3092",
+    "nasai-3093"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-1400",
+     "book_title": "صحيح البخاري",
+     "number": "1400",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter24.csv",
+     "quote": "الزَّكَاةَ حَقُّ الْمَالِ، وَاللَّهِ لَوْ مَنَعُونِي عَنَاقًا كَانُوا يُؤَدُّونَهَا إِلَى",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "bukhari-6925",
+     "book_title": "صحيح البخاري",
+     "number": "6925",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter88.csv",
+     "quote": "الزَّكَاةَ حَقُّ الْمَالِ، وَاللَّهِ لَوْ مَنَعُونِي عَنَاقًا كَانُوا يُؤَدُّونَهَا إِلَى",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-3092",
+     "book_title": "سنن النسائي",
+     "number": "3092",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter25.csv",
+     "quote": "الزَّكَاةَ حَقُّ الْمَالِ وَاللَّهِ لَوْ مَنَعُونِي عَنَاقًا كَانُوا يُؤَدُّونَهَا إِلَى",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-3093",
+     "book_title": "سنن النسائي",
+     "number": "3093",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter25.csv",
+     "quote": "الزَّكَاةَ حَقُّ الْمَالِ وَاللَّهِ لَوْ مَنَعُونِي عَنَاقًا كَانُوا يُؤَدُّونَهَا إِلَى",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "bukhari-1400",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "الزكاه حق المال والله لو منعوني عناقا كانوا يودونها الي",
+   "typos": [
+    {
+     "from": "الزكاه",
+     "to": "الذكاه",
+     "rule": "حرف مكان حرف يشبهه نطقًا (ز←ذ)"
+    },
+    {
+     "from": "يودونها",
+     "to": "يودنها",
+     "rule": "سقوط حرف"
+    }
+   ]
+  },
+  {
+   "id": "spelling-bukhari-433",
+   "category": "spelling",
+   "query": "علي هولاء المعزبين الا ان تكونوا باكين فان لم تكووا",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-433"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-433",
+     "book_title": "صحيح البخاري",
+     "number": "433",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter8.csv",
+     "quote": "عَلَى هَؤُلاَءِ الْمُعَذَّبِينَ إِلاَّ أَنْ تَكُونُوا بَاكِينَ، فَإِنْ لَمْ تَكُونُوا",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "bukhari-433",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "علي هولاء المعذبين الا ان تكونوا باكين فان لم تكونوا",
+   "typos": [
+    {
+     "from": "المعذبين",
+     "to": "المعزبين",
+     "rule": "حرف مكان حرف يشبهه نطقًا (ذ←ز)"
+    },
+    {
+     "from": "تكونوا",
+     "to": "تكووا",
+     "rule": "سقوط حرف"
+    }
+   ]
+  },
+  {
+   "id": "spelling-bukhari-5932",
+   "category": "spelling",
+   "query": "علي النمبر وهو يقول وطناول قصه من شعر كانت بيد",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-5932"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-5932",
+     "book_title": "صحيح البخاري",
+     "number": "5932",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter77.csv",
+     "quote": "عَلَى الْمِنْبَرِ، وَهْوَ يَقُولُ ـ وَتَنَاوَلَ قُصَّةً مِنْ شَعَرٍ كَانَتْ بِيَدِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "bukhari-5932",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "علي المنبر وهو يقول وتناول قصه من شعر كانت بيد",
+   "typos": [
+    {
+     "from": "المنبر",
+     "to": "النمبر",
+     "rule": "تبديل حرفين متجاورين"
+    },
+    {
+     "from": "وتناول",
+     "to": "وطناول",
+     "rule": "حرف مكان حرف يشبهه نطقًا (ت←ط)"
+    }
+   ]
+  },
+  {
+   "id": "exact-muslim-443",
+   "category": "exact",
+   "query": "لَوْ رَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم لَسَأَلْتُهُ فَقَالَ عَنْ أَىِّ شَىْءٍ كُنْتَ تَسْأَلُهُ قَالَ كُنْتُ أَسْأَلُهُ هَلْ رَأَيْتَ رَبَّكَ قَالَ أَبُو ذَرٍّ قَدْ سَأَلْتُ فَقَالَ رَأَيْتُ نُورًا",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-443"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-443",
+     "book_title": "صحيح مسلم",
+     "number": "443",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter1.csv",
+     "quote": "لَوْ رَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم لَسَأَلْتُهُ فَقَالَ عَنْ أَىِّ شَىْءٍ كُنْتَ تَسْأَلُهُ قَالَ كُنْتُ أَسْأَلُهُ هَلْ رَأَيْتَ رَبَّكَ قَالَ أَبُو ذَرٍّ قَدْ سَأَلْتُ فَقَالَ رَأَيْتُ نُورًا",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "muslim-443",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-muslim-5595",
+   "category": "exact",
+   "query": "عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ لاَ يُقِيمَنَّ أَحَدُكُمْ أَخَاهُ يَوْمَ الْجُمُعَةِ ثُمَّ لْيُخَالِفْ إِلَى مَقْعَدِهِ فَيَقْعُدَ فِيهِ وَلَكِنْ يَقُولُ افْسَحُوا",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-5595"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-5595",
+     "book_title": "صحيح مسلم",
+     "number": "5595",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter39.csv",
+     "quote": "عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ لاَ يُقِيمَنَّ أَحَدُكُمْ أَخَاهُ يَوْمَ الْجُمُعَةِ ثُمَّ لْيُخَالِفْ إِلَى مَقْعَدِهِ فَيَقْعُدَ فِيهِ وَلَكِنْ يَقُولُ افْسَحُوا",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "muslim-5595",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-muslim-871",
+   "category": "exact",
+   "query": "بِهِ النَّبِيَّ صلى الله عليه وسلم لاَ صَلاَةَ لِمَنْ لَمْ يَقْرَأْ بِفَاتِحَةِ الْكِتَابِ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-871"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-871",
+     "book_title": "صحيح مسلم",
+     "number": "871",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter4.csv",
+     "quote": "بِهِ النَّبِيَّ صلى الله عليه وسلم لاَ صَلاَةَ لِمَنْ لَمْ يَقْرَأْ بِفَاتِحَةِ الْكِتَابِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "muslim-871",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "partial-muslim-2341",
+   "category": "partial",
+   "query": "وَيَسْتَغْنِيَ بِهِ مِنَ النَّاسِ خَيْرٌ لَهُ مِنْ أَنْ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-2341"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-2341",
+     "book_title": "صحيح مسلم",
+     "number": "2341",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter12.csv",
+     "quote": "وَيَسْتَغْنِيَ بِهِ مِنَ النَّاسِ خَيْرٌ لَهُ مِنْ أَنْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "muslim-2341",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-muslim-1818",
+   "category": "partial",
+   "query": "كَيْتَ وَكَيْتَ بَلْ هُوَ نُسِّيَ اسْتَذْكِرُوا الْقُرْآنَ فَلَهُوَ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-1818"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-1818",
+     "book_title": "صحيح مسلم",
+     "number": "1818",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter6.csv",
+     "quote": "كَيْتَ وَكَيْتَ بَلْ هُوَ نُسِّيَ اسْتَذْكِرُوا الْقُرْآنَ فَلَهُوَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "muslim-1818",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-muslim-524",
+   "category": "partial",
+   "query": "اللَّهِ قَالَ هُمُ الَّذِينَ لاَ يَكْتَوُونَ وَلاَ يَسْتَرْقُونَ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-524"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-524",
+     "book_title": "صحيح مسلم",
+     "number": "524",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter1.csv",
+     "quote": "اللَّهِ قَالَ هُمُ الَّذِينَ لاَ يَكْتَوُونَ وَلاَ يَسْتَرْقُونَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "muslim-524",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "spelling-muslim-3141",
+   "category": "spelling",
+   "query": "كنت افتل قلايد هدي رسول الله بديي ثم يبعس بها",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-3141"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-3141",
+     "book_title": "صحيح مسلم",
+     "number": "3141",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter15.csv",
+     "quote": "كُنْتُ أَفْتِلُ قَلاَئِدَ هَدْىِ رَسُولِ اللَّهِ صلى الله عليه وسلم بِيَدَىَّ ثُمَّ يَبْعَثُ بِهَا",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "muslim-3141",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "كنت افتل قلايد هدي رسول الله بيدي ثم يبعث بها",
+   "typos": [
+    {
+     "from": "بيدي",
+     "to": "بديي",
+     "rule": "تبديل حرفين متجاورين"
+    },
+    {
+     "from": "يبعث",
+     "to": "يبعس",
+     "rule": "حرف مكان حرف يشبهه نطقًا (ث←س)"
+    }
+   ]
+  },
+  {
+   "id": "spelling-muslim-2251",
+   "category": "spelling",
+   "query": "يفنقه الرجل علي دابته في سبيل الله ودينار ينقه علي",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-2251"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-2251",
+     "book_title": "صحيح مسلم",
+     "number": "2251",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter12.csv",
+     "quote": "يُنْفِقُهُ الرَّجُلُ عَلَى دَابَّتِهِ فِي سَبِيلِ اللَّهِ وَدِينَارٌ يُنْفِقُهُ عَلَى",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "muslim-2251",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "ينفقه الرجل علي دابته في سبيل الله ودينار ينفقه علي",
+   "typos": [
+    {
+     "from": "ينفقه",
+     "to": "يفنقه",
+     "rule": "تبديل حرفين متجاورين"
+    },
+    {
+     "from": "ينفقه",
+     "to": "ينقه",
+     "rule": "سقوط حرف"
+    }
+   ]
+  },
+  {
+   "id": "spelling-muslim-5520",
+   "category": "spelling",
+   "query": "عبءه يهنا بعيرا له فقال هل معك تمر فلقت نعم",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-5520"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-5520",
+     "book_title": "صحيح مسلم",
+     "number": "5520",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter38.csv",
+     "quote": "عَبَاءَةٍ يَهْنَأُ بَعِيرًا لَهُ فَقَالَ هَلْ مَعَكَ تَمْرٌ فَقُلْتُ نَعَمْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "muslim-5520",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "عباءه يهنا بعيرا له فقال هل معك تمر فقلت نعم",
+   "typos": [
+    {
+     "from": "عباءه",
+     "to": "عبءه",
+     "rule": "سقوط حرف"
+    },
+    {
+     "from": "فقلت",
+     "to": "فلقت",
+     "rule": "تبديل حرفين متجاورين"
+    }
+   ]
+  },
+  {
+   "id": "exact-abudawud-2712",
+   "category": "exact",
+   "query": "أَمَرَ نَبِيُّ اللَّهِ صلى الله عليه وسلم بِقَتْلِ الْكِلاَبِ حَتَّى إِنْ كَانَتِ الْمَرْأَةُ تَقْدَمُ مِنَ الْبَادِيَةِ يَعْنِي بِالْكَلْبِ فَنَقْتُلُهُ ثُمَّ نَهَانَا عَنْ قَتْلِهَا وَقَالَ عَلَيْكُمْ بِالأَسْوَدِ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "abudawud-2712"
+   ],
+   "evidence": [
+    {
+     "id": "abudawud-2712",
+     "book_title": "سنن أبي داود",
+     "number": "2712",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter17.csv",
+     "quote": "أَمَرَ نَبِيُّ اللَّهِ صلى الله عليه وسلم بِقَتْلِ الْكِلاَبِ حَتَّى إِنْ كَانَتِ الْمَرْأَةُ تَقْدَمُ مِنَ الْبَادِيَةِ يَعْنِي بِالْكَلْبِ فَنَقْتُلُهُ ثُمَّ نَهَانَا عَنْ قَتْلِهَا وَقَالَ عَلَيْكُمْ بِالأَسْوَدِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "abudawud-2712",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-abudawud-3127",
+   "category": "exact",
+   "query": "عُمَرَ، يَبْلُغُ بِهِ النَّبِيَّ صلى الله عليه وسلم قَالَ مَنْ حَلَفَ عَلَى يَمِينٍ فَقَالَ إِنْ شَاءَ اللَّهُ فَقَدِ اسْتَثْنَى",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "abudawud-3127"
+   ],
+   "evidence": [
+    {
+     "id": "abudawud-3127",
+     "book_title": "سنن أبي داود",
+     "number": "3127",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter22.csv",
+     "quote": "عُمَرَ، يَبْلُغُ بِهِ النَّبِيَّ صلى الله عليه وسلم قَالَ مَنْ حَلَفَ عَلَى يَمِينٍ فَقَالَ إِنْ شَاءَ اللَّهُ فَقَدِ اسْتَثْنَى",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "abudawud-3127",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-abudawud-3418",
+   "category": "exact",
+   "query": "عَنِ النَّبِيِّ صلى الله عليه وسلم بِمَعْنَاهُ قَالَ أَبُو دَاوُدَ وَهَكَذَا رَوَاهُ اللَّيْثُ بْنُ سَعْدٍ عَنِ الزُّهْرِيِّ عَنْ أَبِي سَلَمَةَ عَنْ جَابِرٍ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "abudawud-3418"
+   ],
+   "evidence": [
+    {
+     "id": "abudawud-3418",
+     "book_title": "سنن أبي داود",
+     "number": "3418",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter24.csv",
+     "quote": "عَنِ النَّبِيِّ صلى الله عليه وسلم بِمَعْنَاهُ قَالَ أَبُو دَاوُدَ وَهَكَذَا رَوَاهُ اللَّيْثُ بْنُ سَعْدٍ عَنِ الزُّهْرِيِّ عَنْ أَبِي سَلَمَةَ عَنْ جَابِرٍ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "abudawud-3418",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "partial-abudawud-1648",
+   "category": "partial",
+   "query": "عَلَى بَنَاتِ آدَمَ فَقَالَ انْسُكِي الْمَنَاسِكَ كُلَّهَا غَيْرَ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "abudawud-1648"
+   ],
+   "evidence": [
+    {
+     "id": "abudawud-1648",
+     "book_title": "سنن أبي داود",
+     "number": "1648",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter11.csv",
+     "quote": "عَلَى بَنَاتِ آدَمَ فَقَالَ انْسُكِي الْمَنَاسِكَ كُلَّهَا غَيْرَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "abudawud-1648",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-abudawud-1501",
+   "category": "partial",
+   "query": "فِي سَبِيلِ اللَّهِ أَوْ لِعَامِلٍ عَلَيْهَا أَوْ لِغَارِمٍ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "abudawud-1501"
+   ],
+   "evidence": [
+    {
+     "id": "abudawud-1501",
+     "book_title": "سنن أبي داود",
+     "number": "1501",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter9.csv",
+     "quote": "فِي سَبِيلِ اللَّهِ أَوْ لِعَامِلٍ عَلَيْهَا أَوْ لِغَارِمٍ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "abudawud-1501",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-abudawud-854",
+   "category": "partial",
+   "query": "كَلاَمِ النَّاسِ هَذَا إِنَّمَا هُوَ التَّسْبِيحُ وَالتَّكْبِيرُ وَقِرَاءَةُ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "abudawud-854"
+   ],
+   "evidence": [
+    {
+     "id": "abudawud-854",
+     "book_title": "سنن أبي داود",
+     "number": "854",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter2.csv",
+     "quote": "كَلاَمِ النَّاسِ هَذَا إِنَّمَا هُوَ التَّسْبِيحُ وَالتَّكْبِيرُ وَقِرَاءَةُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "abudawud-854",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "spelling-abudawud-334",
+   "category": "spelling",
+   "query": "فذكروا ذلك للنبي فقال يا عمرو صليت باصابك ونات جنب",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "abudawud-334"
+   ],
+   "evidence": [
+    {
+     "id": "abudawud-334",
+     "book_title": "سنن أبي داود",
+     "number": "334",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter1.csv",
+     "quote": "فَذَكَرُوا ذَلِكَ لِلنَّبِيِّ صلى الله عليه وسلم فَقَالَ يَا عَمْرُو صَلَّيْتَ بِأَصْحَابِكَ وَأَنْتَ جُنُبٌ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "abudawud-334",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "فذكروا ذلك للنبي فقال يا عمرو صليت باصحابك وانت جنب",
+   "typos": [
+    {
+     "from": "باصحابك",
+     "to": "باصابك",
+     "rule": "سقوط حرف"
+    },
+    {
+     "from": "وانت",
+     "to": "ونات",
+     "rule": "تبديل حرفين متجاورين"
+    }
+   ]
+  },
+  {
+   "id": "spelling-abudawud-4604",
+   "category": "spelling",
+   "query": "التامه من كل شيطان واهمه ومن كل عين لماه ثم",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "abudawud-4604"
+   ],
+   "evidence": [
+    {
+     "id": "abudawud-4604",
+     "book_title": "سنن أبي داود",
+     "number": "4604",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter42.csv",
+     "quote": "التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لاَمَّةٍ ثُمَّ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "abudawud-4604",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "التامه من كل شيطان وهامه ومن كل عين لامه ثم",
+   "typos": [
+    {
+     "from": "وهامه",
+     "to": "واهمه",
+     "rule": "تبديل حرفين متجاورين"
+    },
+    {
+     "from": "لامه",
+     "to": "لماه",
+     "rule": "تبديل حرفين متجاورين"
+    }
+   ]
+  },
+  {
+   "id": "spelling-abudawud-2007",
+   "category": "spelling",
+   "query": "دعا الرجل امراته الي فراشه فابت فلم تاته فابت غظبان",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "abudawud-2007"
+   ],
+   "evidence": [
+    {
+     "id": "abudawud-2007",
+     "book_title": "سنن أبي داود",
+     "number": "2007",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter12.csv",
+     "quote": "دَعَا الرَّجُلُ امْرَأَتَهُ إِلَى فِرَاشِهِ فَأَبَتْ فَلَمْ تَأْتِهِ فَبَاتَ غَضْبَانَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "abudawud-2007",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "دعا الرجل امراته الي فراشه فابت فلم تاته فبات غضبان",
+   "typos": [
+    {
+     "from": "فبات",
+     "to": "فابت",
+     "rule": "تبديل حرفين متجاورين"
+    },
+    {
+     "from": "غضبان",
+     "to": "غظبان",
+     "rule": "حرف مكان حرف يشبهه نطقًا (ض←ظ)"
+    }
+   ]
+  },
+  {
+   "id": "exact-tirmidhi-848",
+   "category": "exact",
+   "query": "أَبِي قَتَادَةَ، فِي حِمَارِ الْوَحْشِ مِثْلَ حَدِيثِ أَبِي النَّضْرِ غَيْرَ أَنَّ فِي، حَدِيثِ زَيْدِ بْنِ أَسْلَمَ أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ هَلْ مَعَكُمْ مِنْ لَحْمِهِ شَيْءٌ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "tirmidhi-848"
+   ],
+   "evidence": [
+    {
+     "id": "tirmidhi-848",
+     "book_title": "جامع الترمذي",
+     "number": "848",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter9.csv",
+     "quote": "أَبِي قَتَادَةَ، فِي حِمَارِ الْوَحْشِ مِثْلَ حَدِيثِ أَبِي النَّضْرِ غَيْرَ أَنَّ فِي، حَدِيثِ زَيْدِ بْنِ أَسْلَمَ أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ هَلْ مَعَكُمْ مِنْ لَحْمِهِ شَيْءٌ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "tirmidhi-848",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-tirmidhi-421",
+   "category": "exact",
+   "query": "قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم إِذَا صَلَّى أَحَدُكُمْ رَكْعَتَىِ الْفَجْرِ فَلْيَضْطَجِعْ عَلَى يَمِينِهِ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "tirmidhi-421"
+   ],
+   "evidence": [
+    {
+     "id": "tirmidhi-421",
+     "book_title": "جامع الترمذي",
+     "number": "421",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter2.csv",
+     "quote": "قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم إِذَا صَلَّى أَحَدُكُمْ رَكْعَتَىِ الْفَجْرِ فَلْيَضْطَجِعْ عَلَى يَمِينِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "tirmidhi-421",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-tirmidhi-2956",
+   "category": "exact",
+   "query": "قَالَ النَّبِيُّ صلى الله عليه وسلم إِنَّ أَحَبَّ الأَسْمَاءِ إِلَى اللَّهِ عَبْدُ اللَّهِ وَعَبْدُ الرَّحْمَنِ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "tirmidhi-2956"
+   ],
+   "evidence": [
+    {
+     "id": "tirmidhi-2956",
+     "book_title": "جامع الترمذي",
+     "number": "2956",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter43.csv",
+     "quote": "قَالَ النَّبِيُّ صلى الله عليه وسلم إِنَّ أَحَبَّ الأَسْمَاءِ إِلَى اللَّهِ عَبْدُ اللَّهِ وَعَبْدُ الرَّحْمَنِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "tirmidhi-2956",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "partial-tirmidhi-3592",
+   "category": "partial",
+   "query": "مِنْ قَوْمٍ يَذْكُرُونَ اللَّهَ إِلاَّ حَفَّتْ بِهِمُ الْمَلاَئِكَةُ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "tirmidhi-3592"
+   ],
+   "evidence": [
+    {
+     "id": "tirmidhi-3592",
+     "book_title": "جامع الترمذي",
+     "number": "3592",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter48.csv",
+     "quote": "مِنْ قَوْمٍ يَذْكُرُونَ اللَّهَ إِلاَّ حَفَّتْ بِهِمُ الْمَلاَئِكَةُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "tirmidhi-3592",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-tirmidhi-2555",
+   "category": "partial",
+   "query": "لَهُ شَمْلَهُ وَأَتَتْهُ الدُّنْيَا وَهِيَ رَاغِمَةٌ وَمَنْ كَانَتِ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "tirmidhi-2555"
+   ],
+   "evidence": [
+    {
+     "id": "tirmidhi-2555",
+     "book_title": "جامع الترمذي",
+     "number": "2555",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter37.csv",
+     "quote": "لَهُ شَمْلَهُ وَأَتَتْهُ الدُّنْيَا وَهِيَ رَاغِمَةٌ وَمَنْ كَانَتِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "tirmidhi-2555",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-tirmidhi-3489",
+   "category": "partial",
+   "query": "يُسْحَبُونَ فِي النَّارِ عَلَى وُجُوهِهِمْ ذُوقُوا مَسَّ سَقَرَ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-6620",
+    "tirmidhi-2242",
+    "tirmidhi-3489",
+    "ibnmajah-83"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-6620",
+     "book_title": "صحيح مسلم",
+     "number": "6620",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter46.csv",
+     "quote": "يُسْحَبُونَ فِي النَّارِ عَلَى وُجُوهِهِمْ ذُوقُوا مَسَّ سَقَرَ*",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "tirmidhi-2242",
+     "book_title": "جامع الترمذي",
+     "number": "2242",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter32.csv",
+     "quote": "يُسْحَبُونَ فِي النَّارِ عَلَى وُجُوهِهِمْ ذُوقُوا مَسَّ سَقَرَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "tirmidhi-3489",
+     "book_title": "جامع الترمذي",
+     "number": "3489",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter47.csv",
+     "quote": "يُسْحَبُونَ فِي النَّارِ عَلَى وُجُوهِهِمْ ذُوقُوا مَسَّ سَقَرَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "ibnmajah-83",
+     "book_title": "سنن ابن ماجه",
+     "number": "83",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter0.csv",
+     "quote": "يُسْحَبُونَ فِي النَّارِ عَلَى وُجُوهِهِمْ ذُوقُوا مَسَّ سَقَرَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "tirmidhi-3489",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "spelling-tirmidhi-2102-2",
+   "category": "spelling",
+   "query": "اذا احب الله عبدا حماه النديا كما يظل احدكم يهمي",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "tirmidhi-2102-2"
+   ],
+   "evidence": [
+    {
+     "id": "tirmidhi-2102-2",
+     "book_title": "جامع الترمذي",
+     "number": "2102",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter28.csv",
+     "quote": "إِذَا أَحَبَّ اللَّهُ عَبْدًا حَمَاهُ الدُّنْيَا كَمَا يَظَلُّ أَحَدُكُمْ يَحْمِي",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "tirmidhi-2102-2",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "اذا احب الله عبدا حماه الدنيا كما يظل احدكم يحمي",
+   "typos": [
+    {
+     "from": "الدنيا",
+     "to": "النديا",
+     "rule": "تبديل حرفين متجاورين"
+    },
+    {
+     "from": "يحمي",
+     "to": "يهمي",
+     "rule": "حرف مكان حرف يشبهه نطقًا (ح←ه)"
+    }
+   ]
+  },
+  {
+   "id": "spelling-tirmidhi-2281",
+   "category": "spelling",
+   "query": "سبحان الله ماذا انزل الليله من الفنه ماذا ازنل من",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-1126",
+    "tirmidhi-2281"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-1126",
+     "book_title": "صحيح البخاري",
+     "number": "1126",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter19.csv",
+     "quote": "سُبْحَانَ اللَّهِ مَاذَا أُنْزِلَ اللَّيْلَةَ مِنَ الْفِتْنَةِ، مَاذَا أُنْزِلَ مِنَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "tirmidhi-2281",
+     "book_title": "جامع الترمذي",
+     "number": "2281",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter33.csv",
+     "quote": "سُبْحَانَ اللَّهِ مَاذَا أُنْزِلَ اللَّيْلَةَ مِنَ الْفِتْنَةِ مَاذَا أُنْزِلَ مِنَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "tirmidhi-2281",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "سبحان الله ماذا انزل الليله من الفتنه ماذا انزل من",
+   "typos": [
+    {
+     "from": "الفتنه",
+     "to": "الفنه",
+     "rule": "سقوط حرف"
+    },
+    {
+     "from": "انزل",
+     "to": "ازنل",
+     "rule": "تبديل حرفين متجاورين"
+    }
+   ]
+  },
+  {
+   "id": "spelling-tirmidhi-1216",
+   "category": "spelling",
+   "query": "الطجار فاستجابوا لرسول الله ورفعوا اعناقهم وابصارهم ايله فقال ان",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "tirmidhi-1216"
+   ],
+   "evidence": [
+    {
+     "id": "tirmidhi-1216",
+     "book_title": "جامع الترمذي",
+     "number": "1216",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Tirmizi/Chapter14.csv",
+     "quote": "التُّجَّارِ فَاسْتَجَابُوا لِرَسُولِ اللَّهِ صلى الله عليه وسلم وَرَفَعُوا أَعْنَاقَهُمْ وَأَبْصَارَهُمْ إِلَيْهِ فَقَالَ إِنَّ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "tirmidhi-1216",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "التجار فاستجابوا لرسول الله ورفعوا اعناقهم وابصارهم اليه فقال ان",
+   "typos": [
+    {
+     "from": "التجار",
+     "to": "الطجار",
+     "rule": "حرف مكان حرف يشبهه نطقًا (ت←ط)"
+    },
+    {
+     "from": "اليه",
+     "to": "ايله",
+     "rule": "تبديل حرفين متجاورين"
+    }
+   ]
+  },
+  {
+   "id": "exact-nasai-3034",
+   "category": "exact",
+   "query": "قَالَ كُنْتُ فِيمَنْ قَدَّمَ النَّبِيُّ صلى الله عليه وسلم لَيْلَةَ الْمُزْدَلِفَةِ فِي ضَعَفَةِ أَهْلِهِ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "nasai-3034"
+   ],
+   "evidence": [
+    {
+     "id": "nasai-3034",
+     "book_title": "سنن النسائي",
+     "number": "3034",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter24.csv",
+     "quote": "قَالَ كُنْتُ فِيمَنْ قَدَّمَ النَّبِيُّ صلى الله عليه وسلم لَيْلَةَ الْمُزْدَلِفَةِ فِي ضَعَفَةِ أَهْلِهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "nasai-3034",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-nasai-874",
+   "category": "exact",
+   "query": "قَالَ جَاءَ رَجُلٌ وَرَسُولُ اللَّهِ صلى الله عليه وسلم فِي صَلاَةِ الصُّبْحِ فَرَكَعَ الرَّكْعَتَيْنِ ثُمَّ دَخَلَ فَلَمَّا قَضَى رَسُولُ اللَّهِ صلى الله عليه وسلم صَلاَتَهُ قَالَ يَا فُلاَنُ أَيُّهُمَا صَلاَتُكَ الَّتِي صَلَّيْتَ مَعَنَا أَوِ الَّتِي صَلَّيْتَ لِنَفْسِكَ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "nasai-874"
+   ],
+   "evidence": [
+    {
+     "id": "nasai-874",
+     "book_title": "سنن النسائي",
+     "number": "874",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter10.csv",
+     "quote": "قَالَ جَاءَ رَجُلٌ وَرَسُولُ اللَّهِ صلى الله عليه وسلم فِي صَلاَةِ الصُّبْحِ فَرَكَعَ الرَّكْعَتَيْنِ ثُمَّ دَخَلَ فَلَمَّا قَضَى رَسُولُ اللَّهِ صلى الله عليه وسلم صَلاَتَهُ قَالَ يَا فُلاَنُ أَيُّهُمَا صَلاَتُكَ الَّتِي صَلَّيْتَ مَعَنَا أَوِ الَّتِي صَلَّيْتَ لِنَفْسِكَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "nasai-874",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-nasai-1190",
+   "category": "exact",
+   "query": "قَالَ خَرَجَ عَلَيْنَا رَسُولُ اللَّهِ صلى الله عليه وسلم وَنَحْنُ رَافِعُو أَيْدِينَا فِي الصَّلاَةِ فَقَالَ مَا بَالُهُمْ رَافِعِينَ أَيْدِيَهُمْ فِي الصَّلاَةِ كَأَنَّهَا أَذْنَابُ الْخَيْلِ الشُّمُسِ اسْكُنُوا فِي الصَّلاَةِ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "nasai-1190"
+   ],
+   "evidence": [
+    {
+     "id": "nasai-1190",
+     "book_title": "سنن النسائي",
+     "number": "1190",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter13.csv",
+     "quote": "قَالَ خَرَجَ عَلَيْنَا رَسُولُ اللَّهِ صلى الله عليه وسلم وَنَحْنُ رَافِعُو أَيْدِينَا فِي الصَّلاَةِ فَقَالَ مَا بَالُهُمْ رَافِعِينَ أَيْدِيَهُمْ فِي الصَّلاَةِ كَأَنَّهَا أَذْنَابُ الْخَيْلِ الشُّمُسِ اسْكُنُوا فِي الصَّلاَةِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "nasai-1190",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "partial-nasai-3586",
+   "category": "partial",
+   "query": "وَكَانَ أَمَدُهَا ثَنِيَّةَ الْوَدَاعِ وَسَابَقَ بَيْنَ الْخَيْلِ الَّتِي",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-4761",
+    "abudawud-2441",
+    "nasai-3586",
+    "nasai-3587"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-4761",
+     "book_title": "صحيح مسلم",
+     "number": "4761",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter33.csv",
+     "quote": "وَكَانَ أَمَدُهَا ثَنِيَّةَ الْوَدَاعِ وَسَابَقَ بَيْنَ الْخَيْلِ الَّتِي",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "abudawud-2441",
+     "book_title": "سنن أبي داود",
+     "number": "2441",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/AbuDaud/Chapter15.csv",
+     "quote": "وَكَانَ أَمَدُهَا ثَنِيَّةَ الْوَدَاعِ وَسَابَقَ بَيْنَ الْخَيْلِ الَّتِي",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-3586",
+     "book_title": "سنن النسائي",
+     "number": "3586",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter28.csv",
+     "quote": "وَكَانَ أَمَدُهَا ثَنِيَّةَ الْوَدَاعِ وَسَابَقَ بَيْنَ الْخَيْلِ الَّتِي",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-3587",
+     "book_title": "سنن النسائي",
+     "number": "3587",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter28.csv",
+     "quote": "وَكَانَ أَمَدُهَا ثَنِيَّةَ الْوَدَاعِ وَسَابَقَ بَيْنَ الْخَيْلِ الَّتِي",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "nasai-3586",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-nasai-4736",
+   "category": "partial",
+   "query": "اتَّقِ اللَّهَ وَاعْفُ عَنِّي فَإِنَّهُ أَعْظَمُ لأَجْرِكَ وَخَيْرٌ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "nasai-4736"
+   ],
+   "evidence": [
+    {
+     "id": "nasai-4736",
+     "book_title": "سنن النسائي",
+     "number": "4736",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter45.csv",
+     "quote": "اتَّقِ اللَّهَ وَاعْفُ عَنِّي فَإِنَّهُ أَعْظَمُ لأَجْرِكَ وَخَيْرٌ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "nasai-4736",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-nasai-4744",
+   "category": "partial",
+   "query": "مَالِكٍ فَقَالَ كُنْتُ بَيْنَ حُجْرَتَىِ امْرَأَتَيْنِ فَضَرَبَتْ إِحْدَاهُمَا",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "nasai-4744"
+   ],
+   "evidence": [
+    {
+     "id": "nasai-4744",
+     "book_title": "سنن النسائي",
+     "number": "4744",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter45.csv",
+     "quote": "مَالِكٍ فَقَالَ كُنْتُ بَيْنَ حُجْرَتَىِ امْرَأَتَيْنِ فَضَرَبَتْ إِحْدَاهُمَا",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "nasai-4744",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "spelling-nasai-2397",
+   "category": "spelling",
+   "query": "الا الخير قال لا صام من صام الابد وكلن الدك",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "nasai-2397"
+   ],
+   "evidence": [
+    {
+     "id": "nasai-2397",
+     "book_title": "سنن النسائي",
+     "number": "2397",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter22.csv",
+     "quote": "إِلاَّ الْخَيْرَ قَالَ لاَ صَامَ مَنْ صَامَ الأَبَدَ وَلَكِنْ أَدُلُّكَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "nasai-2397",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "الا الخير قال لا صام من صام الابد ولكن ادلك",
+   "typos": [
+    {
+     "from": "ولكن",
+     "to": "وكلن",
+     "rule": "تبديل حرفين متجاورين"
+    },
+    {
+     "from": "ادلك",
+     "to": "الدك",
+     "rule": "تبديل حرفين متجاورين"
+    }
+   ]
+  },
+  {
+   "id": "spelling-nasai-3395",
+   "category": "spelling",
+   "query": "غير جماع فاذا حضات وطهرت طلقها اخري فاذا حاضت وتهرت",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "nasai-3395"
+   ],
+   "evidence": [
+    {
+     "id": "nasai-3395",
+     "book_title": "سنن النسائي",
+     "number": "3395",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter27.csv",
+     "quote": "غَيْرِ جِمَاعٍ فَإِذَا حَاضَتْ وَطَهُرَتْ طَلَّقَهَا أُخْرَى فَإِذَا حَاضَتْ وَطَهُرَتْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "nasai-3395",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "غير جماع فاذا حاضت وطهرت طلقها اخري فاذا حاضت وطهرت",
+   "typos": [
+    {
+     "from": "حاضت",
+     "to": "حضات",
+     "rule": "تبديل حرفين متجاورين"
+    },
+    {
+     "from": "وطهرت",
+     "to": "وتهرت",
+     "rule": "حرف مكان حرف يشبهه نطقًا (ط←ت)"
+    }
+   ]
+  },
+  {
+   "id": "spelling-nasai-4432",
+   "category": "spelling",
+   "query": "فقال ما انا باكله حتي اسال فانلق الي اخيه لماه",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "bukhari-3996",
+    "nasai-4432"
+   ],
+   "evidence": [
+    {
+     "id": "bukhari-3996",
+     "book_title": "صحيح البخاري",
+     "number": "3996",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Bukhari/Chapter64.csv",
+     "quote": "فَقَالَ مَا أَنَا بِآكِلِهِ حَتَّى أَسْأَلَ، فَانْطَلَقَ إِلَى أَخِيهِ لأُمِّهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "nasai-4432",
+     "book_title": "سنن النسائي",
+     "number": "4432",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Nesai/Chapter43.csv",
+     "quote": "فَقَالَ مَا أَنَا بِآكِلِهِ حَتَّى أَسْأَلَ فَانْطَلَقَ إِلَى أَخِيهِ لأُمِّهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "nasai-4432",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "فقال ما انا باكله حتي اسال فانطلق الي اخيه لامه",
+   "typos": [
+    {
+     "from": "فانطلق",
+     "to": "فانلق",
+     "rule": "سقوط حرف"
+    },
+    {
+     "from": "لامه",
+     "to": "لماه",
+     "rule": "تبديل حرفين متجاورين"
+    }
+   ]
+  },
+  {
+   "id": "exact-ibnmajah-929",
+   "category": "exact",
+   "query": "أَمَّنَا النَّبِيُّ صلى الله عليه وسلم فَكَانَ يَنْصَرِفُ عَنْ جَانِبَيْهِ جَمِيعًا",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "ibnmajah-929"
+   ],
+   "evidence": [
+    {
+     "id": "ibnmajah-929",
+     "book_title": "سنن ابن ماجه",
+     "number": "929",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter5.csv",
+     "quote": "أَمَّنَا النَّبِيُّ صلى الله عليه وسلم فَكَانَ يَنْصَرِفُ عَنْ جَانِبَيْهِ جَمِيعًا",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "ibnmajah-929",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-ibnmajah-2099",
+   "category": "exact",
+   "query": "قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم لاَ تَحْلِفُوا بِالطَّوَاغِي وَلاَ بِآبَائِكُمْ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "muslim-4184",
+    "ibnmajah-2099"
+   ],
+   "evidence": [
+    {
+     "id": "muslim-4184",
+     "book_title": "صحيح مسلم",
+     "number": "4184",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/Muslim/Chapter27.csv",
+     "quote": "قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم لاَ تَحْلِفُوا بِالطَّوَاغِي وَلاَ بِآبَائِكُمْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    },
+    {
+     "id": "ibnmajah-2099",
+     "book_title": "سنن ابن ماجه",
+     "number": "2099",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter11.csv",
+     "quote": "قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم لاَ تَحْلِفُوا بِالطَّوَاغِي وَلاَ بِآبَائِكُمْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "ibnmajah-2099",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "exact-ibnmajah-2342",
+   "category": "exact",
+   "query": "اللَّهِ، أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ لِيَهُودِيَّيْنِ نَشَدْتُكُمَا بِاللَّهِ الَّذِي أَنْزَلَ التَّوْرَاةَ عَلَى مُوسَى عَلَيْهِ السَّلاَمُ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "ibnmajah-2342"
+   ],
+   "evidence": [
+    {
+     "id": "ibnmajah-2342",
+     "book_title": "سنن ابن ماجه",
+     "number": "2342",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter13.csv",
+     "quote": "اللَّهِ، أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ لِيَهُودِيَّيْنِ نَشَدْتُكُمَا بِاللَّهِ الَّذِي أَنْزَلَ التَّوْرَاةَ عَلَى مُوسَى",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "ibnmajah-2342",
+    "rule": "متن السجل كاملًا كما هو"
+   }
+  },
+  {
+   "id": "partial-ibnmajah-3940",
+   "category": "partial",
+   "query": "بِهِ فَإِذَا قَالَ بِسْمِ اللَّهِ قَالاَ هُدِيتَ وَإِذَا",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "ibnmajah-3940"
+   ],
+   "evidence": [
+    {
+     "id": "ibnmajah-3940",
+     "book_title": "سنن ابن ماجه",
+     "number": "3940",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter34.csv",
+     "quote": "بِهِ فَإِذَا قَالَ بِسْمِ اللَّهِ قَالاَ هُدِيتَ وَإِذَا",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "ibnmajah-3940",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-ibnmajah-2795",
+   "category": "partial",
+   "query": "وَلاَ سَلَكْتُمْ طَرِيقًا إِلاَّ شَرِكُوكُمْ فِي الأَجْرِ حَبَسَهُمُ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "ibnmajah-2795"
+   ],
+   "evidence": [
+    {
+     "id": "ibnmajah-2795",
+     "book_title": "سنن ابن ماجه",
+     "number": "2795",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter24.csv",
+     "quote": "وَلاَ سَلَكْتُمْ طَرِيقًا إِلاَّ شَرِكُوكُمْ فِي الأَجْرِ حَبَسَهُمُ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "ibnmajah-2795",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "partial-ibnmajah-3922",
+   "category": "partial",
+   "query": "وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَى وَبِكَ نَمُوتُ وَإِذَا أَمْسَيْتُمْ",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "ibnmajah-3922"
+   ],
+   "evidence": [
+    {
+     "id": "ibnmajah-3922",
+     "book_title": "سنن ابن ماجه",
+     "number": "3922",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter34.csv",
+     "quote": "وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَى وَبِكَ نَمُوتُ وَإِذَا أَمْسَيْتُمْ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "ibnmajah-3922",
+    "rule": "8 كلمات متتالية من وسط المتن كما هي"
+   }
+  },
+  {
+   "id": "spelling-ibnmajah-1803",
+   "category": "spelling",
+   "query": "الله الي المن وامرني ان اخذ من القر من كل",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "ibnmajah-1803"
+   ],
+   "evidence": [
+    {
+     "id": "ibnmajah-1803",
+     "book_title": "سنن ابن ماجه",
+     "number": "1803",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter8.csv",
+     "quote": "اللَّهِ صلى الله عليه وسلم إِلَى الْيَمَنِ وَأَمَرَنِي أَنْ آخُذَ مِنَ الْبَقَرِ مِنْ كُلِّ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "ibnmajah-1803",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "الله الي اليمن وامرني ان اخذ من البقر من كل",
+   "typos": [
+    {
+     "from": "اليمن",
+     "to": "المن",
+     "rule": "سقوط حرف"
+    },
+    {
+     "from": "البقر",
+     "to": "القر",
+     "rule": "سقوط حرف"
+    }
+   ]
+  },
+  {
+   "id": "spelling-ibnmajah-3432",
+   "category": "spelling",
+   "query": "الايات من اخر سروه البقره في ارلبا خرج رسول الله",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "ibnmajah-3432"
+   ],
+   "evidence": [
+    {
+     "id": "ibnmajah-3432",
+     "book_title": "سنن ابن ماجه",
+     "number": "3432",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter30.csv",
+     "quote": "الآيَاتُ مِنْ آخِرِ سُورَةِ الْبَقَرَةِ فِي الرِّبَا خَرَجَ رَسُولُ اللَّهِ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "ibnmajah-3432",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "الايات من اخر سوره البقره في الربا خرج رسول الله",
+   "typos": [
+    {
+     "from": "سوره",
+     "to": "سروه",
+     "rule": "تبديل حرفين متجاورين"
+    },
+    {
+     "from": "الربا",
+     "to": "ارلبا",
+     "rule": "تبديل حرفين متجاورين"
+    }
+   ]
+  },
+  {
+   "id": "spelling-ibnmajah-3833",
+   "category": "spelling",
+   "query": "بالقران مع السفره الكرام البرره والذي يقوه يتتتع فيه وهو",
+   "expect": "exists",
+   "status": "auto",
+   "relevant": [
+    "ibnmajah-3833"
+   ],
+   "evidence": [
+    {
+     "id": "ibnmajah-3833",
+     "book_title": "سنن ابن ماجه",
+     "number": "3833",
+     "source": "مدونة LK للحديث (LK Hadith Corpus) — جامعة ليدز وجامعة الملك سعود",
+     "url": "https://github.com/ShathaTm/LK-Hadith-Corpus/blob/master/IbnMaja/Chapter33.csv",
+     "quote": "بِالْقُرْآنِ مَعَ السَّفَرَةِ الْكِرَامِ الْبَرَرَةِ وَالَّذِي يَقْرَؤُهُ يَتَتَعْتَعُ فِيهِ وَهُوَ",
+     "retrieved": "2026-09-28",
+     "method": "كلمات النص موجودة بهذا الترتيب في عمود Arabic_Matn من المدونة، بعد توحيد الكتابة (حذف التشكيل وتوحيد صور الحروف)، مع قبول واو أو فاء متصلة بأول كلمة. فحص آلي في evaluation/corpus_check.py، وليس حكمًا علميًا."
+    }
+   ],
+   "origin": {
+    "kind": "corpus_sample",
+    "record": "ibnmajah-3833",
+    "rule": "10 كلمات متتالية من المتن بعد توحيد الكتابة، مع خطأين إملائيين آليين"
+   },
+   "clean_query": "بالقران مع السفره الكرام البرره والذي يقروه يتتعتع فيه وهو",
+   "typos": [
+    {
+     "from": "يقروه",
+     "to": "يقوه",
+     "rule": "سقوط حرف"
+    },
+    {
+     "from": "يتتعتع",
+     "to": "يتتتع",
+     "rule": "سقوط حرف"
+    }
+   ]
+  }
+ ]
+}
