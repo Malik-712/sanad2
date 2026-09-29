@@ -10,7 +10,7 @@
   },
   "rewrites": [
     {
-      "source": "/((?!api/|vendor/|js/|style\\.css|favicon\\.svg).*)",
+      "source": "/((?!api/|vendor/|js/|style\\.css|favicon\\.(?:svg|ico)|sanad-mark\\.svg|apple-touch-icon\\.png).*)",
       "destination": "/index.html"
     }
   ],

@@ -155,7 +155,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); }
 .brand { display: inline-flex; align-items: center; gap: var(--sp-3); color: var(--text); text-decoration: none; flex: none; }
 .brand:hover { color: var(--text); }
-.brand .mark { width: 36px; height: 36px; flex: none; display: block; }
+.brand .mark { width: 40px; height: 40px; flex: none; display: block; }
 .brand .word { font: 500 15px/1 var(--f-brand); letter-spacing: .42em; margin-inline-end: -.42em; }
 .top .end { display: flex; align-items: center; gap: var(--sp-2); min-width: 0; }
 .nav { display: flex; align-items: center; gap: 2px; }

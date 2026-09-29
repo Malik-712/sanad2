@@ -306,3 +306,13 @@ Front end only; the API, the data and every religious text are unchanged.
   no third-party requests, no console errors; search, results, hadith, tree
   (search, focus, compare, filters, URL state, fullscreen), sources, 404 and
   error states.
+
+### Logo and header (2026-09-29)
+
+- The logo is now `sanad-mark.svg` (gold frame and corner diamonds) in the
+  header, `public/favicon.svg`, a new `public/favicon.ico` (16/32/48 px) and
+  `public/apple-touch-icon.png`. The icon links carry `?v=3` so browsers drop
+  the old cached tab icon.
+- Header order swapped: the menu, with «تحقّق» first, now sits on the right,
+  and the logo sits on the far left. Both are aligned to the page gutter and
+  vertically centred in the 64 px bar.
