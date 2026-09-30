@@ -1,13 +1,30 @@
 # سجل التغييرات — Changelog
 
-كل ما يُبنى فوق نسخة الأساس (v0، 28 سبتمبر 2026) يُسجَّل هنا مرحلةً مرحلة.
-Everything built on top of the v0 baseline is recorded here, phase by phase.
+أيام التحدي الرسمية: **4–6 أكتوبر 2026**. كل ما قبلها (النسخة 0 في 28 سبتمبر، ثم
+المراحل التالية حتى 3 أكتوبر) هو **نسخة الأساس السابقة للتحدي**، وتنتهي بالوسم
+`challenge-baseline` (انظر `docs/BASELINE.md`). عمل أيام التحدي يُسجَّل وحده في
+القسم التالي.
+
+The official challenge days are **4–6 Oct 2026**. Everything before them (v0 on
+28 Sep and the later sections up to 3 Oct) is the **pre-challenge baseline**,
+ending at the git tag `challenge-baseline` (see `docs/BASELINE.md`). Work done
+during the challenge days is recorded only in the next section.
+
+Note: commit `6beec79` (28 Sep) says "challenge-day work" in its message. That
+wording is wrong: the work is part of the pre-challenge baseline. Git history
+was not rewritten.
 
 قواعد المصادر التي تلتزمها كل المراحل: `.claude/skills/religious-sourcing/SKILL.md`.
 
 ---
 
-## Phase 1 — Audit and fixes (2026-09-28)
+## Challenge days (4–6 Oct 2026)
+
+_No entries yet. Each entry is dated, and each commit starts with `[challenge-day]`._
+
+---
+
+## Pre-challenge baseline — Phase 1: Audit and fixes (2026-09-28)
 
 ### Isnad parser (`sanad_core/isnad.py`, rewritten)
 The parser now works on tokens and keeps, for every name, the span of the
@@ -98,7 +115,7 @@ incomplete instead of being drawn under the Prophet.
 
 ---
 
-## Phase 2 — Visual identity (2026-09-28)
+## Pre-challenge baseline — Phase 2: Visual identity (2026-09-28)
 
 ### Identity
 - **One idea, rubrication.** In hadith manuscripts the transmission words
@@ -149,7 +166,7 @@ incomplete instead of being drawn under the Prophet.
 
 ---
 
-## Phase 3 — A stronger isnad tree (2026-09-28)
+## Pre-challenge baseline — Phase 3: A stronger isnad tree (2026-09-28)
 
 - **Opens large and clear:** if the whole tree fits at a readable zoom
   (≥ 0.85) it is fitted; otherwise it opens at that zoom with the Prophet at
@@ -182,7 +199,7 @@ incomplete instead of being drawn under the Prophet.
 
 ---
 
-## Phase 4 — Dorar (الدرر السنية) (2026-09-28)
+## Pre-challenge baseline — Phase 4: Dorar (الدرر السنية) (2026-09-28)
 
 ### Access investigation (done first)
 | check | result |
@@ -230,7 +247,7 @@ against bots, and Sanad does not work around that.
 
 ---
 
-## Phase 5 — Provenance report (2026-09-28)
+## Pre-challenge baseline — Phase 5: Provenance report (2026-09-28)
 
 - Every religious field and every narrator-profile field has an expandable
   «كيف حصلنا على هذه المعلومة؟» box: source (linked), the exact quote,
@@ -251,7 +268,7 @@ against bots, and Sanad does not work around that.
 
 ---
 
-## Finish (2026-09-28)
+## Pre-challenge baseline — Finish (2026-09-28)
 
 - README.md rewritten for the current state (phases, how it works, running,
   tests, data scripts, structure, known limits). SOURCES.md adds the Dorar API,
@@ -262,7 +279,7 @@ against bots, and Sanad does not work around that.
 
 ---
 
-## Phase 6 — UI redesign on one design system (2026-09-29)
+## Pre-challenge baseline — Phase 6: UI redesign on one design system (2026-09-29)
 
 Front end only; the API, the data and every religious text are unchanged.
 
@@ -319,7 +336,7 @@ Front end only; the API, the data and every religious text are unchanged.
 
 ---
 
-## Search evaluation harness (2026-09-29)
+## Pre-challenge baseline — Search evaluation harness (2026-09-29)
 
 No change to search, data or the UI. No model, embedding or generative step.
 
@@ -351,7 +368,8 @@ No change to search, data or the UI. No model, embedding or generative step.
   category has no ranked cases until a reviewer fills them.
 - `requirements-dev.txt`: pytest.
 
-## Competition audit follow-up — 2026-09-30
+## Pre-challenge baseline — Competition audit follow-up (2026-09-30)
 
 - Adopted the project phrase **لكل حديث إسناد** in the public title and home page.
 - Corrected the README and engine comments so they do not imply that a trained ML model is currently used in the runtime path. The current search is deterministic BM25 + fuzzy term expansion + ordered alignment/ranking.
+- Corrected the timeline wording: README "الحالة" and the CHANGELOG headings now call all work from 28 Sep to 3 Oct the **pre-challenge baseline**; an empty "Challenge days (4–6 Oct 2026)" section was added at the top.
