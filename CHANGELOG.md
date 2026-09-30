@@ -350,3 +350,9 @@ No change to search, data or the UI. No model, embedding or generative step.
   its only word-for-word record is not in the top 10. The wording-variation
   category has no ranked cases until a reviewer fills them.
 - `requirements-dev.txt`: pytest.
+
+## Competition audit follow-up — 2026-09-30
+
+- Adopted the project phrase **لكل حديث إسناد** in the public title and home page.
+- Corrected the README and engine comments so they do not imply that a trained ML model is currently used in the runtime path. The current search is deterministic BM25 + fuzzy term expansion + ordered alignment/ranking.
+- The official challenge PDFs and the project PowerPoint were not present in the accessible repository tree or current conversation attachments during this audit. Their exact mandatory requirements therefore remain unverified and must not be represented as confirmed compliance.
