@@ -1,5 +1,11 @@
 # سند — لكل حديث إسناد
 
+> **Sanad — Every hadith has its isnad (لكل حديث إسناد).**
+> Paste a text attributed to the Prophet ﷺ and Sanad tells you whether it appears in the six books, where, and in which wording, or says plainly that it is not in its sources.
+> It shows every chain (isnad) of the hadith in an interactive tree, and scholars' grades only as quotes attributed to the scholar and book (Dorar official API).
+> Every religious fact carries its source, link, verbatim quote, date and extraction method; Sanad never writes religious text itself.
+> Live: https://sanad-virid-kappa.vercel.app · Track 04 of the AI in Serving Islamic Content Challenge 2026 · Pre-challenge baseline: [`docs/BASELINE.md`](docs/BASELINE.md).
+
 **سند** أداة تحقق: تلصق نصًا يُنسب إلى النبي ﷺ، أو تكتب موضوعًا، فيخبرك سند هل هو موجود في الكتب الستة، وأين، وبأي لفظ. ثم يعرض كل طرقه في **شجرة إسناد تفاعلية**، من النبي ﷺ إلى المصنفين، ويعرض أحكام العلماء عليه **منسوبة إلى قائليها** كما وردت في الموسوعة الحديثية (الدرر السنية).
 
 الذكاء الاصطناعي في سند **يبحث ويرتّب ويقارن** فقط. لا يؤلّف نصًا دينيًا، ولا يحكم على حديث أو راوٍ. كل معلومة دينية معها صندوق **«كيف حصلنا على هذه المعلومة؟»**: المصدر ورابطه، والنص الذي أُخذت منه حرفيًا، وتاريخ الأخذ، وطريقة الاستخراج، ودرجة الثقة. وإن لم يجد معلومة كتب **«غير متوفر في المصدر»**.

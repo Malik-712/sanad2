@@ -43,7 +43,7 @@ function render() {
   const p = hit ? hit[1](path.match(hit[0]), q) : notFound();
   Promise.resolve(p).catch((e) => { if (!(e instanceof Aborted)) showError(e); });
 }
-function setTitle(t) { document.title = t ? `${t} | سند` : "سند | تحقّق من الحديث قبل أن تنشره"; }
+function setTitle(t) { document.title = t ? `${t} | سند` : "سند | لكل حديث إسناد"; }
 function focusMain() { app.focus({ preventScroll: true }); }
 function showError(e) {
   setTitle("تعذّر عرض الصفحة");
