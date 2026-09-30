@@ -172,8 +172,8 @@ async function home() {
   app.innerHTML = `
     <div class="home">
       <section aria-labelledby="h-title">
-        <h1 id="h-title">تحقّق من الحديث قبل أن تنشره</h1>
-        <p class="lede">الصق نصًا يُنسب إلى النبي ﷺ. يخبرك سند هل هو في الكتب الستة، وأين، وبأي لفظ، ثم يعرض طرقه كلها في شجرة واحدة.</p>
+        <h1 id="h-title">لكل حديث إسناد</h1>
+        <p class="lede">تحقّق من الحديث قبل أن تنشره: ابحث عن النص في الكتب الستة، ثم اقرأ إسناده وطرق روايته في شجرة واحدة.</p>
         ${askBox()}
         <div class="tries">
           <h2 id="tries-t">أو جرّب نصًا متداولًا</h2>
