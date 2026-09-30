@@ -373,3 +373,4 @@ No change to search, data or the UI. No model, embedding or generative step.
 - Adopted the project phrase **لكل حديث إسناد** in the public title and home page.
 - Corrected the README and engine comments so they do not imply that a trained ML model is currently used in the runtime path. The current search is deterministic BM25 + fuzzy term expansion + ordered alignment/ranking.
 - Corrected the timeline wording: README "الحالة" and the CHANGELOG headings now call all work from 28 Sep to 3 Oct the **pre-challenge baseline**; an empty "Challenge days (4–6 Oct 2026)" section was added at the top.
+- Added `docs/BASELINE.md` as a draft baseline disclosure (features before 4 Oct, data, tests, third-party rights). The metric snapshot and the `challenge-baseline` tag are left for 3 Oct, as planned.
