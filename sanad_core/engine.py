@@ -13,9 +13,10 @@ from . import provenance as prov
 
 DATA_DIR = os.environ.get("SANAD_DATA", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"))
 
-# Decision thresholds for the three result states. v0 values were set by hand
-# on a few known examples; during the challenge they are replaced by a
-# calibrated logistic-regression model trained on the labelled test set.
+# Decision thresholds for the three result states, set by hand on the v0 smoke
+# examples (evaluation/v0_smoke_cases.json). Nothing here is learned. A model
+# that replaces them must be trained on training data only, never on the
+# held-out test cases (split "test" in evaluation/cases.json).
 T_FOUND = 0.85      # ordered word alignment with the best matn -> "موجود في المصادر"
 T_NEAR = 0.70       # -> "يوجد حديث قريب"
 T_FAMILY = 0.45     # matn similarity to count as the same hadith in the tree
