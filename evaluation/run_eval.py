@@ -3,6 +3,7 @@
     python evaluation/run_eval.py            # summary table + failures
     python evaluation/run_eval.py -v         # every case
     python evaluation/run_eval.py --json     # machine-readable
+    python evaluation/run_eval.py --split test   # table for one split (dev or test)
 
 Exit code 1 if any false "exists" or any floor in thresholds.json is broken.
 Cases and metrics: evaluation/README.md.
@@ -13,9 +14,10 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from harness import KS, check_thresholds, evaluate, load_thresholds  # noqa: E402
+from harness import KS, REVIEW_SCOPE, SPLITS, check_thresholds, evaluate, load_thresholds  # noqa: E402
 
 LABELS = {"exact": "exact text", "partial": "partial quote", "variation": "wording variation",
+          "meaning": "meaning (human)", "conflict": "grade conflict",
           "spelling": "spelling mistakes", "not_in_six_books": "not in the six books"}
 
 
@@ -45,6 +47,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("-v", "--verbose", action="store_true")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--split", choices=SPLITS, help="show the table for one split only")
     a = ap.parse_args()
     report = evaluate()
     fails = check_thresholds(report, load_thresholds())
@@ -55,7 +58,15 @@ def main():
 
     o = report["overall"]
     print("Sanad search evaluation\n")
-    print(table(report))
+    counts = ", ".join(f"{s} {v['overall']['cases']}" for s, v in report["by_split"].items())
+    print(f"Splits: {counts}. Floors apply to dev.\n")
+    if not a.split:
+        print(table(report))
+    elif a.split in report["by_split"]:
+        print(f"Split: {a.split}\n")
+        print(table(report["by_split"][a.split]))
+    else:
+        print(f"No {a.split} cases yet.")
     print("""
 R@k     recall@k: the expected record is in the first k results
 MRR     mean of 1/rank of the first expected record (1.00 = always first)
@@ -68,12 +79,15 @@ ranked  cases with checked expected records; the others count for the verdict on
     print(f"False \"exists\": {o['false_exists']} of {o['absent_cases']} absent texts"
           f"  {'OK' if o['false_exists'] == 0 else 'FAIL'}")
     print(f"Cases waiting for a human reviewer: {report['needs_review']} (see evaluation/README.md)")
+    if report["reviewed"]:
+        print(f"Reviewed cases: {report['reviewed']} ({REVIEW_SCOPE}).")
 
-    misses = [r for r in report["results"] if (r["ranked"] and r["rank"] != 1) or
+    shown = [r for r in report["results"] if not a.split or r["split"] == a.split]
+    misses = [r for r in shown if (r["ranked"] and r["rank"] != 1) or
               (r["said_exists"] != (r["expect"] == "exists"))]
     if misses or a.verbose:
         print("\nCases not answered perfectly:" if not a.verbose else "\nAll cases:")
-        for r in (report["results"] if a.verbose else misses):
+        for r in (shown if a.verbose else misses):
             ok = r["said_exists"] == (r["expect"] == "exists") and (not r["ranked"] or r["rank"] == 1)
             rank = "—" if not r["ranked"] else (r["rank"] or ">10")
             print(f"  {'✓' if ok else '✗'} {r['id']:22} expect={r['expect']:6} state={r['state']:9} rank={rank!s:4} {r['query'][:60]}")

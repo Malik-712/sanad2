@@ -13,7 +13,13 @@ The expected records of a case are only ever the records that contain the
 query's words in the same order (evaluation/corpus_check.py). Nothing here
 decides which hadith a text "is". A text that is not in the corpus word for
 word gets status "needs_review" and no expected records; a human fills them.
-Cases a human has marked "reviewed" are kept as they are on a rebuild.
+Cases a human has marked "reviewed" are kept as they are on a rebuild, and so
+are all cases written by a person (origin.kind "human", imported with
+evaluation/review_sheet.py), whatever their status.
+
+Every generated case has split "dev": these cases (and the v0 set, which was
+used to set the thresholds) may be used for tuning. Held-out "test" cases are
+set only through review_sheet.py.
 """
 import hashlib
 import json
@@ -69,7 +75,7 @@ def typo(word, n):
 
 def case(cid, category, query, expect, relevant, corpus, qwords, origin, status="auto", **extra):
     c = {"id": cid, "category": category, "query": query, "expect": expect, "status": status,
-         "relevant": relevant,
+         "split": "dev", "relevant": relevant,
          "evidence": [corpus.evidence(hid, qwords) for hid in relevant],
          "origin": origin}
     c.update(extra)
@@ -185,7 +191,8 @@ def reviewed_evidence(c, corpus):
     """Fill the provenance of records a human reviewer chose (quote = the
     record's matn as it is, since the query need not match it word for word)."""
     rv = c.get("review", {})
-    method = f"اختاره المراجع {rv.get('reviewer', '?')} بتاريخ {rv.get('date', '?')}. {rv.get('basis', '')}".strip()
+    method = (f"اختاره {rv.get('reviewer', '?')} بتاريخ {rv.get('date', '?')} بمقابلة نص المصدر "
+              f"(ليس مراجعة مختص شرعي). {rv.get('basis', '')}").strip()
     c["evidence"] = []
     for hid in c["relevant"]:
         h = corpus.by_id[hid]
@@ -197,12 +204,15 @@ def reviewed_evidence(c, corpus):
 
 def main():
     corpus = Corpus()
-    kept = {}
+    kept, human = {}, []
     if os.path.exists(CASES_FILE):
         with open(CASES_FILE, encoding="utf-8") as fh:
-            kept = {c["id"]: c for c in json.load(fh)["cases"] if c.get("status") == "reviewed"}
+            old = json.load(fh)["cases"]
+        kept = {c["id"]: c for c in old if c.get("status") == "reviewed"}
+        human = [c for c in old if c.get("origin", {}).get("kind") == "human"]
     cases = from_v0(corpus) + generated(corpus)
     cases = [reviewed_evidence(kept[c["id"]], corpus) if c["id"] in kept else c for c in cases]
+    cases += [reviewed_evidence(c, corpus) if c["status"] == "reviewed" else c for c in human]
     doc = {
         "format": "sanad-eval-cases/1",
         "about": "حالات تقييم البحث. انظر evaluation/README.md لمعنى كل حقل.",

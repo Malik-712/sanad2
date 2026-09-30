@@ -22,6 +22,7 @@ python -m pytest tests/test_eval.py  # regression gate (also part of the full su
 | `harness.py` | runs the cases and computes the metrics |
 | `thresholds.json` | the floors the tests enforce |
 | `run_eval.py` | the readable report |
+| `review_sheet.py` | export cases to a CSV for Excel, and import the decisions |
 
 ## Case format
 
@@ -39,8 +40,17 @@ python -m pytest tests/test_eval.py  # regression gate (also part of the full su
 ```
 
 - `category`: `exact` (the whole matn), `partial` (a run of words from it),
-  `variation` (different wording), `spelling` (typos), `not_in_six_books`.
-- `expect`: `exists` or `absent`.
+  `variation` (different wording), `spelling` (typos), `not_in_six_books`
+  (texts not in the six books; the review sheet also accepts `absent`),
+  and two categories written by a person, never generated:
+  `meaning` (a description or paraphrase of a hadith) and `conflict` (a
+  hadith whose attributed grades differ between scholars; today it is scored
+  as a search case like the others).
+- `expect`: `exists` or `absent` (`absent` only for `not_in_six_books`).
+- `split`: `dev` (may be used for tuning) or `test` (held out: never used for
+  tuning or training). Test cases must be `reviewed`. The v0 cases set the
+  thresholds, so they stay in `dev`. The floors in `thresholds.json` apply to
+  `dev` only; false "exists" must be 0 on every case.
 - `status`:
   - `auto`: `relevant` is exactly the set of records whose matn contains the
     query's words in order (a و or ف attached to the first word is accepted).
@@ -57,15 +67,47 @@ python -m pytest tests/test_eval.py  # regression gate (also part of the full su
   `typos` (each change and the rule that made it). The typos are mechanical
   test input, not a text shown to anyone.
 
-## Reviewing a case
+## Who checks the labels
 
-1. Open the case in `cases.json`. Check its `review.candidates` and search the
-   corpus yourself.
-2. Set `"status": "reviewed"`, put the chosen record ids in `relevant` (or leave
-   it empty for a confirmed `absent`), and fill
-   `"review": {"reviewer": "<name>", "date": "YYYY-MM-DD", "basis": "<why, with a source>"}`.
-3. Run `python evaluation/build_cases.py`. It keeps reviewed cases and fills
-   their `evidence`, then run the tests.
+Sanad has one team member. Reviewed labels are **checked by the author
+(Malik) against the source text; they are not reviewed by a Sharia
+specialist.** Every reviewed case stores this in `review.scope`, the report
+prints it, and a test fails if a reviewed case says anything else.
+
+## Reviewing cases and adding your own (review sheet)
+
+```
+python evaluation/review_sheet.py export                    # -> evaluation/review_sheet.csv (git-ignored)
+# open it in Excel; add your rows; save as "CSV UTF-8"
+python evaluation/review_sheet.py fill evaluation/review_sheet.csv    # candidates for your new rows
+python evaluation/review_sheet.py import evaluation/review_sheet.csv  # apply rows with decision=accept
+python -m unittest discover -s tests
+```
+
+- **Existing case:** check `candidates`, put the record ids in `relevant`
+  (empty for `absent`), write `basis` (why, with a source), set
+  `decision` = `accept`. `reviewer` defaults to "Malik (author)", `date` to
+  today.
+- **New case** (meaning queries, absent texts, conflict cases): add a row with
+  an empty `id`, your `category` and `query`. The tool never writes these; the
+  meaning queries and the absent list are written by the author. Run `fill`
+  to see candidate records (verbatim short quotes, to look at, not an
+  answer), then fill `relevant`, `basis`, `decision` = `accept` and import.
+  New rows get the id `human-<category>-<hash>`, `origin.kind` = `human` and
+  split `test` unless you write `dev`. `decision` = `remove` deletes a case
+  you added.
+- The import is all or nothing and refuses, among others: an `absent` text
+  that a record contains word for word, `exists` without records, unknown
+  record ids, an empty `basis`, a v0 case in `test`, a changed query on a
+  generated case.
+- `build_cases.py` keeps every reviewed case and every case you added.
+
+Target for the held-out `test` split: 100 reviewed cases — at least 30
+`meaning`, 40 `not_in_six_books`, 15 `variation`, the rest
+exact / partial / spelling / conflict. `python evaluation/run_eval.py --split test`
+shows them alone. Training data for a learned model (plan T12) goes in the
+paths listed in `harness.TRAINING_FILE_GLOBS`; a test fails if a test case or
+one of its expected records appears there.
 
 ## What the numbers mean
 

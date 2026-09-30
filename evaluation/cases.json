@@ -8,6 +8,7 @@
    "query": "انما الاعمال بالنيات وانما لكل امرئ ما نوى",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-1",
     "abudawud-2067"
@@ -45,6 +46,7 @@
    "query": "من سلك طريق يلتمس علم سهل الله له طريق للجنه",
    "expect": "exists",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -85,6 +87,7 @@
    "query": "طلب العلم فريضة على كل مسلم",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "ibnmajah-224"
    ],
@@ -111,6 +114,7 @@
    "query": "الدين النصيحة",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-195",
     "abudawud-4811",
@@ -203,6 +207,7 @@
    "query": "تبسمك في وجه اخيك صدقة",
    "expect": "exists",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -243,6 +248,7 @@
    "query": "خيركم من تعلم القران وعلمه",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-5027",
     "abudawud-1318",
@@ -302,6 +308,7 @@
    "query": "من غشنا فليس منا",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-281",
     "ibnmajah-2236"
@@ -339,6 +346,7 @@
    "query": "لا ضرر ولا ضرار",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "ibnmajah-2354",
     "ibnmajah-2355"
@@ -376,6 +384,7 @@
    "query": "الكلمة الطيبة صدقة",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-2979",
     "muslim-2276"
@@ -413,6 +422,7 @@
    "query": "من صام رمضان ايمانا واحتسابا غفر له ما تقدم من ذنبه",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-38",
     "bukhari-1901",
@@ -527,6 +537,7 @@
    "query": "من كان يؤمن بالله واليوم الاخر فليقل خيرا او ليصمت",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-6018",
     "bukhari-6019",
@@ -652,6 +663,7 @@
    "query": "اذا اتاكم من ترضون دينه وخلقه فزوجوه",
    "expect": "exists",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -692,6 +704,7 @@
    "query": "العلماء ورثة الانبياء",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "abudawud-3507",
     "tirmidhi-2789"
@@ -729,6 +742,7 @@
    "query": "من قال لا اله الا الله دخل الجنة",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "tirmidhi-2745"
    ],
@@ -755,6 +769,7 @@
    "query": "اطلبوا العلم ولو في الصين",
    "expect": "absent",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -798,6 +813,7 @@
    "query": "النظافة من الايمان",
    "expect": "absent",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -841,6 +857,7 @@
    "query": "حب الوطن من الايمان",
    "expect": "absent",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -884,6 +901,7 @@
    "query": "الجنة تحت اقدام الامهات",
    "expect": "absent",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -927,6 +945,7 @@
    "query": "اختلاف امتي رحمة",
    "expect": "absent",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -970,6 +989,7 @@
    "query": "الصلاة عماد الدين",
    "expect": "absent",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -1013,6 +1033,7 @@
    "query": "استفت قلبك",
    "expect": "absent",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -1056,6 +1077,7 @@
    "query": "اطلب العلم من المهد الى اللحد",
    "expect": "absent",
    "status": "needs_review",
+   "split": "dev",
    "relevant": [],
    "evidence": [],
    "origin": {
@@ -1099,6 +1121,7 @@
    "query": "سَمِعْتُ الْبَرَاءَ رضى الله عنه لَمَّا نَزَلَ صَوْمُ رَمَضَانَ كَانُوا لاَ يَقْرَبُونَ النِّسَاءَ رَمَضَانَ كُلَّهُ، وَكَانَ رِجَالٌ يَخُونُونَ أَنْفُسَهُمْ، فَأَنْزَلَ اللَّهُ { عَلِمَ اللَّهُ أَنَّكُمْ كُنْتُمْ تَخْتَانُونَ أَنْفُسَكُمْ فَتَابَ عَلَيْكُمْ وَعَفَا عَنْكُمْ } .",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-4508"
    ],
@@ -1126,6 +1149,7 @@
    "query": "عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ مَا بَعَثَ اللَّهُ مِنْ نَبِيٍّ إِلاَّ أَنْذَرَ قَوْمَهُ الأَعْوَرَ الْكَذَّابَ، إِنَّهُ أَعْوَرُ، وَإِنَّ رَبَّكُمْ لَيْسَ بِأَعْوَرَ، مَكْتُوبٌ بَيْنَ عَيْنَيْهِ كَافِرٌ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-7407"
    ],
@@ -1153,6 +1177,7 @@
    "query": "أَفْطَرْنَا عَلَى عَهْدِ النَّبِيِّ صلى الله عليه وسلم يَوْمَ غَيْمٍ، ثُمَّ طَلَعَتِ الشَّمْسُ . قِيلَ لِهِشَامٍ فَأُمِرُوا بِالْقَضَاءِ قَالَ بُدٌّ مِنْ قَضَاءٍ . وَقَالَ مَعْمَرٌ سَمِعْتُ هِشَامًا لاَ أَدْرِي أَقْضَوْا أَمْ لاَ .",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-1959"
    ],
@@ -1180,6 +1205,7 @@
    "query": "مِنَ الثَّنِيَّةِ إِلَى مَسْجِدِ بَنِي زُرَيْقٍ . وَأَنَّ عَبْدَ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-420",
     "bukhari-2866",
@@ -1240,6 +1266,7 @@
    "query": "هُرَيْرَةَ جَالِسٌ مَعَ النَّبِيِّ صلى الله عليه وسلم فَقَالَ النَّبِيُّ صلى الله عليه وسلم يَا أَبَا",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-2530"
    ],
@@ -1267,6 +1294,7 @@
    "query": "فَعَجِبَ النَّاسُ مِنْهَا، فَقَالَ وَالَّذِي نَفْسُ مُحَمَّدٍ بِيَدِهِ،",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-2615 - 2616",
     "bukhari-3248",
@@ -1316,6 +1344,7 @@
    "query": "الذكاه حق المال والله لو منعوني عناقا كانوا يودنها الي",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-1400",
     "bukhari-6925",
@@ -1389,6 +1418,7 @@
    "query": "علي هولاء المعزبين الا ان تكونوا باكين فان لم تكووا",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-433"
    ],
@@ -1429,6 +1459,7 @@
    "query": "علي النمبر وهو يقول وطناول قصه من شعر كانت بيد",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-5932"
    ],
@@ -1469,6 +1500,7 @@
    "query": "لَوْ رَأَيْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم لَسَأَلْتُهُ فَقَالَ عَنْ أَىِّ شَىْءٍ كُنْتَ تَسْأَلُهُ قَالَ كُنْتُ أَسْأَلُهُ هَلْ رَأَيْتَ رَبَّكَ قَالَ أَبُو ذَرٍّ قَدْ سَأَلْتُ فَقَالَ رَأَيْتُ نُورًا",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-443"
    ],
@@ -1496,6 +1528,7 @@
    "query": "عَنِ النَّبِيِّ صلى الله عليه وسلم قَالَ لاَ يُقِيمَنَّ أَحَدُكُمْ أَخَاهُ يَوْمَ الْجُمُعَةِ ثُمَّ لْيُخَالِفْ إِلَى مَقْعَدِهِ فَيَقْعُدَ فِيهِ وَلَكِنْ يَقُولُ افْسَحُوا",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-5595"
    ],
@@ -1523,6 +1556,7 @@
    "query": "بِهِ النَّبِيَّ صلى الله عليه وسلم لاَ صَلاَةَ لِمَنْ لَمْ يَقْرَأْ بِفَاتِحَةِ الْكِتَابِ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-871"
    ],
@@ -1550,6 +1584,7 @@
    "query": "وَيَسْتَغْنِيَ بِهِ مِنَ النَّاسِ خَيْرٌ لَهُ مِنْ أَنْ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-2341"
    ],
@@ -1577,6 +1612,7 @@
    "query": "كَيْتَ وَكَيْتَ بَلْ هُوَ نُسِّيَ اسْتَذْكِرُوا الْقُرْآنَ فَلَهُوَ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-1818"
    ],
@@ -1604,6 +1640,7 @@
    "query": "اللَّهِ قَالَ هُمُ الَّذِينَ لاَ يَكْتَوُونَ وَلاَ يَسْتَرْقُونَ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-524"
    ],
@@ -1631,6 +1668,7 @@
    "query": "كنت افتل قلايد هدي رسول الله بديي ثم يبعس بها",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-3141"
    ],
@@ -1671,6 +1709,7 @@
    "query": "يفنقه الرجل علي دابته في سبيل الله ودينار ينقه علي",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-2251"
    ],
@@ -1711,6 +1750,7 @@
    "query": "عبءه يهنا بعيرا له فقال هل معك تمر فلقت نعم",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-5520"
    ],
@@ -1751,6 +1791,7 @@
    "query": "أَمَرَ نَبِيُّ اللَّهِ صلى الله عليه وسلم بِقَتْلِ الْكِلاَبِ حَتَّى إِنْ كَانَتِ الْمَرْأَةُ تَقْدَمُ مِنَ الْبَادِيَةِ يَعْنِي بِالْكَلْبِ فَنَقْتُلُهُ ثُمَّ نَهَانَا عَنْ قَتْلِهَا وَقَالَ عَلَيْكُمْ بِالأَسْوَدِ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "abudawud-2712"
    ],
@@ -1778,6 +1819,7 @@
    "query": "عُمَرَ، يَبْلُغُ بِهِ النَّبِيَّ صلى الله عليه وسلم قَالَ مَنْ حَلَفَ عَلَى يَمِينٍ فَقَالَ إِنْ شَاءَ اللَّهُ فَقَدِ اسْتَثْنَى",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "abudawud-3127"
    ],
@@ -1805,6 +1847,7 @@
    "query": "عَنِ النَّبِيِّ صلى الله عليه وسلم بِمَعْنَاهُ قَالَ أَبُو دَاوُدَ وَهَكَذَا رَوَاهُ اللَّيْثُ بْنُ سَعْدٍ عَنِ الزُّهْرِيِّ عَنْ أَبِي سَلَمَةَ عَنْ جَابِرٍ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "abudawud-3418"
    ],
@@ -1832,6 +1875,7 @@
    "query": "عَلَى بَنَاتِ آدَمَ فَقَالَ انْسُكِي الْمَنَاسِكَ كُلَّهَا غَيْرَ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "abudawud-1648"
    ],
@@ -1859,6 +1903,7 @@
    "query": "فِي سَبِيلِ اللَّهِ أَوْ لِعَامِلٍ عَلَيْهَا أَوْ لِغَارِمٍ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "abudawud-1501"
    ],
@@ -1886,6 +1931,7 @@
    "query": "كَلاَمِ النَّاسِ هَذَا إِنَّمَا هُوَ التَّسْبِيحُ وَالتَّكْبِيرُ وَقِرَاءَةُ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "abudawud-854"
    ],
@@ -1913,6 +1959,7 @@
    "query": "فذكروا ذلك للنبي فقال يا عمرو صليت باصابك ونات جنب",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "abudawud-334"
    ],
@@ -1953,6 +2000,7 @@
    "query": "التامه من كل شيطان واهمه ومن كل عين لماه ثم",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "abudawud-4604"
    ],
@@ -1993,6 +2041,7 @@
    "query": "دعا الرجل امراته الي فراشه فابت فلم تاته فابت غظبان",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "abudawud-2007"
    ],
@@ -2033,6 +2082,7 @@
    "query": "أَبِي قَتَادَةَ، فِي حِمَارِ الْوَحْشِ مِثْلَ حَدِيثِ أَبِي النَّضْرِ غَيْرَ أَنَّ فِي، حَدِيثِ زَيْدِ بْنِ أَسْلَمَ أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ هَلْ مَعَكُمْ مِنْ لَحْمِهِ شَيْءٌ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "tirmidhi-848"
    ],
@@ -2060,6 +2110,7 @@
    "query": "قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم إِذَا صَلَّى أَحَدُكُمْ رَكْعَتَىِ الْفَجْرِ فَلْيَضْطَجِعْ عَلَى يَمِينِهِ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "tirmidhi-421"
    ],
@@ -2087,6 +2138,7 @@
    "query": "قَالَ النَّبِيُّ صلى الله عليه وسلم إِنَّ أَحَبَّ الأَسْمَاءِ إِلَى اللَّهِ عَبْدُ اللَّهِ وَعَبْدُ الرَّحْمَنِ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "tirmidhi-2956"
    ],
@@ -2114,6 +2166,7 @@
    "query": "مِنْ قَوْمٍ يَذْكُرُونَ اللَّهَ إِلاَّ حَفَّتْ بِهِمُ الْمَلاَئِكَةُ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "tirmidhi-3592"
    ],
@@ -2141,6 +2194,7 @@
    "query": "لَهُ شَمْلَهُ وَأَتَتْهُ الدُّنْيَا وَهِيَ رَاغِمَةٌ وَمَنْ كَانَتِ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "tirmidhi-2555"
    ],
@@ -2168,6 +2222,7 @@
    "query": "يُسْحَبُونَ فِي النَّارِ عَلَى وُجُوهِهِمْ ذُوقُوا مَسَّ سَقَرَ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-6620",
     "tirmidhi-2242",
@@ -2228,6 +2283,7 @@
    "query": "اذا احب الله عبدا حماه النديا كما يظل احدكم يهمي",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "tirmidhi-2102-2"
    ],
@@ -2268,6 +2324,7 @@
    "query": "سبحان الله ماذا انزل الليله من الفنه ماذا ازنل من",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-1126",
     "tirmidhi-2281"
@@ -2319,6 +2376,7 @@
    "query": "الطجار فاستجابوا لرسول الله ورفعوا اعناقهم وابصارهم ايله فقال ان",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "tirmidhi-1216"
    ],
@@ -2359,6 +2417,7 @@
    "query": "قَالَ كُنْتُ فِيمَنْ قَدَّمَ النَّبِيُّ صلى الله عليه وسلم لَيْلَةَ الْمُزْدَلِفَةِ فِي ضَعَفَةِ أَهْلِهِ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "nasai-3034"
    ],
@@ -2386,6 +2445,7 @@
    "query": "قَالَ جَاءَ رَجُلٌ وَرَسُولُ اللَّهِ صلى الله عليه وسلم فِي صَلاَةِ الصُّبْحِ فَرَكَعَ الرَّكْعَتَيْنِ ثُمَّ دَخَلَ فَلَمَّا قَضَى رَسُولُ اللَّهِ صلى الله عليه وسلم صَلاَتَهُ قَالَ يَا فُلاَنُ أَيُّهُمَا صَلاَتُكَ الَّتِي صَلَّيْتَ مَعَنَا أَوِ الَّتِي صَلَّيْتَ لِنَفْسِكَ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "nasai-874"
    ],
@@ -2413,6 +2473,7 @@
    "query": "قَالَ خَرَجَ عَلَيْنَا رَسُولُ اللَّهِ صلى الله عليه وسلم وَنَحْنُ رَافِعُو أَيْدِينَا فِي الصَّلاَةِ فَقَالَ مَا بَالُهُمْ رَافِعِينَ أَيْدِيَهُمْ فِي الصَّلاَةِ كَأَنَّهَا أَذْنَابُ الْخَيْلِ الشُّمُسِ اسْكُنُوا فِي الصَّلاَةِ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "nasai-1190"
    ],
@@ -2440,6 +2501,7 @@
    "query": "وَكَانَ أَمَدُهَا ثَنِيَّةَ الْوَدَاعِ وَسَابَقَ بَيْنَ الْخَيْلِ الَّتِي",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-4761",
     "abudawud-2441",
@@ -2500,6 +2562,7 @@
    "query": "اتَّقِ اللَّهَ وَاعْفُ عَنِّي فَإِنَّهُ أَعْظَمُ لأَجْرِكَ وَخَيْرٌ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "nasai-4736"
    ],
@@ -2527,6 +2590,7 @@
    "query": "مَالِكٍ فَقَالَ كُنْتُ بَيْنَ حُجْرَتَىِ امْرَأَتَيْنِ فَضَرَبَتْ إِحْدَاهُمَا",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "nasai-4744"
    ],
@@ -2554,6 +2618,7 @@
    "query": "الا الخير قال لا صام من صام الابد وكلن الدك",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "nasai-2397"
    ],
@@ -2594,6 +2659,7 @@
    "query": "غير جماع فاذا حضات وطهرت طلقها اخري فاذا حاضت وتهرت",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "nasai-3395"
    ],
@@ -2634,6 +2700,7 @@
    "query": "فقال ما انا باكله حتي اسال فانلق الي اخيه لماه",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "bukhari-3996",
     "nasai-4432"
@@ -2685,6 +2752,7 @@
    "query": "أَمَّنَا النَّبِيُّ صلى الله عليه وسلم فَكَانَ يَنْصَرِفُ عَنْ جَانِبَيْهِ جَمِيعًا",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "ibnmajah-929"
    ],
@@ -2712,6 +2780,7 @@
    "query": "قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم لاَ تَحْلِفُوا بِالطَّوَاغِي وَلاَ بِآبَائِكُمْ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "muslim-4184",
     "ibnmajah-2099"
@@ -2750,6 +2819,7 @@
    "query": "اللَّهِ، أَنَّ رَسُولَ اللَّهِ صلى الله عليه وسلم قَالَ لِيَهُودِيَّيْنِ نَشَدْتُكُمَا بِاللَّهِ الَّذِي أَنْزَلَ التَّوْرَاةَ عَلَى مُوسَى عَلَيْهِ السَّلاَمُ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "ibnmajah-2342"
    ],
@@ -2777,6 +2847,7 @@
    "query": "بِهِ فَإِذَا قَالَ بِسْمِ اللَّهِ قَالاَ هُدِيتَ وَإِذَا",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "ibnmajah-3940"
    ],
@@ -2804,6 +2875,7 @@
    "query": "وَلاَ سَلَكْتُمْ طَرِيقًا إِلاَّ شَرِكُوكُمْ فِي الأَجْرِ حَبَسَهُمُ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "ibnmajah-2795"
    ],
@@ -2831,6 +2903,7 @@
    "query": "وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَى وَبِكَ نَمُوتُ وَإِذَا أَمْسَيْتُمْ",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "ibnmajah-3922"
    ],
@@ -2858,6 +2931,7 @@
    "query": "الله الي المن وامرني ان اخذ من القر من كل",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "ibnmajah-1803"
    ],
@@ -2898,6 +2972,7 @@
    "query": "الايات من اخر سروه البقره في ارلبا خرج رسول الله",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "ibnmajah-3432"
    ],
@@ -2938,6 +3013,7 @@
    "query": "بالقران مع السفره الكرام البرره والذي يقوه يتتتع فيه وهو",
    "expect": "exists",
    "status": "auto",
+   "split": "dev",
    "relevant": [
     "ibnmajah-3833"
    ],

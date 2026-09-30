@@ -7,6 +7,8 @@ Two groups:
   contains the query's words (re-checked from the corpus, not trusted).
 - Regression: no false "exists", and every floor in evaluation/thresholds.json.
 """
+import glob
+import gzip
 import os
 import sys
 import unittest
@@ -46,11 +48,14 @@ class CaseFile(unittest.TestCase):
             self.assertIn(c["category"], harness.CATEGORIES, c["id"])
             self.assertIn(c["expect"], ("exists", "absent"), c["id"])
             self.assertIn(c["status"], STATUSES, c["id"])
+            self.assertIn(c.get("split"), harness.SPLITS, c["id"])
             self.assertTrue(c["query"].strip(), c["id"])
 
-    def test_every_category_has_cases(self):
+    def test_every_built_category_has_cases(self):
+        """Built categories are always there; meaning and conflict cases are
+        written by a person and may still be missing."""
         present = {c["category"] for c in self.cases}
-        self.assertEqual(present, set(harness.CATEGORIES))
+        self.assertLessEqual(set(harness.BUILT_CATEGORIES), present)
 
     def test_absent_cases_have_no_expected_records(self):
         for c in self.cases:
@@ -93,6 +98,53 @@ class CaseFile(unittest.TestCase):
             if c["status"] == "reviewed":
                 self.assertTrue(c.get("review", {}).get("reviewer"), c["id"])
                 self.assertTrue(c.get("review", {}).get("date"), c["id"])
+                self.assertTrue(c.get("review", {}).get("basis"), c["id"])
+
+    def test_reviewed_labels_fit_the_corpus(self):
+        """A reviewed "exists" names real records; a reviewed "absent" text is
+        not in any record word for word (mechanical check, not a judgment)."""
+        for c in self.cases:
+            if c["status"] != "reviewed":
+                continue
+            if c["expect"] == "exists":
+                self.assertTrue(c["relevant"], c["id"])
+                for hid in c["relevant"]:
+                    self.assertIn(hid, self.corpus.by_id, c["id"])
+            else:
+                self.assertEqual(self.corpus.containing(words(c["query"])), [], c["id"])
+
+    def test_test_split_is_reviewed_and_held_out(self):
+        for c in self.cases:
+            if c.get("split") != "test":
+                continue
+            self.assertEqual(c["status"], "reviewed", c["id"])
+            self.assertTrue(c["review"].get("reviewer") and c["review"].get("date"), c["id"])
+            self.assertNotEqual(c["origin"].get("kind"), "v0_smoke",
+                                f"{c['id']}: v0 cases set the thresholds and must stay in dev")
+
+    def test_human_cases_name_their_author(self):
+        for c in self.cases:
+            if c["origin"].get("kind") == "human":
+                self.assertTrue(c["origin"].get("author"), c["id"])
+                self.assertTrue(c["id"].startswith("human-"), c["id"])
+
+    def test_review_never_claims_a_specialist(self):
+        """Solo project: labels are checked by the author against the source
+        text; no case may say it was reviewed by a Sharia specialist."""
+        for c in self.cases:
+            if c["status"] == "reviewed":
+                self.assertEqual(c["review"].get("scope"), harness.REVIEW_SCOPE, c["id"])
+
+    def test_no_test_case_in_training_files(self):
+        test = [c for c in self.cases if c.get("split") == "test"]
+        keys = {c["id"] for c in test} | {hid for c in test for hid in c["relevant"]}
+        for pattern in harness.TRAINING_FILE_GLOBS:
+            for path in glob.glob(os.path.join(ROOT, pattern)):
+                opener = gzip.open if path.endswith(".gz") else open
+                with opener(path, "rt", encoding="utf-8") as fh:
+                    text = fh.read()
+                leaked = sorted(k for k in keys if f'"{k}"' in text)
+                self.assertEqual(leaked, [], f"{path} holds held-out test cases or their records")
 
 
 class Regression(unittest.TestCase):

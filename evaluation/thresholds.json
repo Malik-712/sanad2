@@ -1,5 +1,5 @@
 {
- "about": "Floors for tests/test_eval.py and run_eval.py, set to the values measured on 2026-09-29 (the search is deterministic, so they are exact). Raise a floor when search improves; never lower one without a reason in CHANGELOG.md. false 'exists' must always be 0 and is checked separately.",
+ "about": "Floors for tests/test_eval.py and run_eval.py, set to the values measured on 2026-09-29 (the search is deterministic, so they are exact). They apply to the dev split only (cases with split \"dev\"); held-out test cases have no floors. Raise a floor when search improves; never lower one without a reason in CHANGELOG.md. false 'exists' must always be 0 and is checked separately.",
  "floors": {
   "overall": {"recall@1": 0.908, "recall@3": 0.985, "recall@10": 0.985, "mrr": 0.944, "verdict_precision": 1.0, "verdict_recall": 0.985, "top1_precision": 0.922},
   "exact": {"recall@1": 1.0, "recall@10": 1.0, "mrr": 1.0, "verdict_recall": 1.0, "top1_precision": 1.0},

@@ -73,10 +73,11 @@ python serve.py                 # http://127.0.0.1:8000  (HOST=0.0.0.0 لإتا�
 SANAD_DORAR_LIVE=0 python serve.py   # بدون أي طلب إلى الدرر السنية (المخزّن فقط)
 
 # 2) الاختبارات
-python -m unittest discover -s tests      # 67 اختبارًا، لا تتصل بالإنترنت (أو: python -m pytest tests)
+python -m unittest discover -s tests      # 79 اختبارًا، لا تتصل بالإنترنت (أو: python -m pytest tests)
 python evaluation/run_eval.py             # تقييم البحث: recall@k وMRR والدقة، و«موجود» الخاطئ يجب أن يكون 0
 python evaluation/build_cases.py          # إعادة بناء حالات التقييم (انظر evaluation/README.md)
 python evaluation/parser_metrics.py       # مقاييس قراءة الأسانيد على كل المدونة
+python evaluation/review_sheet.py export  # ملف مراجعة الحالات لـ Excel (انظر evaluation/README.md)
 
 # 3) البيانات
 python pipeline/reparse_chains.py         # إعادة قراءة الأسانيد بعد تعديل القارئ (بدون المدونة)

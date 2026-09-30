@@ -7,3 +7,4 @@ data/dorar_runtime_cache.json
 data/*.tmp
 docs/audit/
 .claude/worktrees/
+evaluation/review_sheet.csv
