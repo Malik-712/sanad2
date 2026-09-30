@@ -82,7 +82,7 @@ python evaluation/parser_metrics.py > evaluation/results/parser-baseline-2026-10
 
 | المكوّن | الحالة |
 |---|---|
-| مدونة LK للحديث (LK Hadith Corpus) | لا يوجد ملف ترخيص في مستودعها؛ يطلب المؤلفون الاستشهاد بورقتين (مذكورتان في SOURCES.md وفي `/about/sources`). **طُلب الإذن بإعادة النشر والعرض: يُملأ تاريخ الطلب والرد** (انظر `docs/permissions/lk-corpus.md` عند وصول الرد). |
+| مدونة LK للحديث (LK Hadith Corpus) | لا يوجد ملف ترخيص في مستودعها؛ يطلب المؤلفون الاستشهاد بورقتين (مذكورتان في SOURCES.md وفي `/about/sources`). **إذن إعادة النشر والعرض لم يُؤكَّد بعد:** طُلب من المؤلفة ولم يصل رد حتى الآن (تاريخ الطلب يُملأ في 3 أكتوبر؛ السجل في [`docs/permissions/lk-corpus.md`](permissions/lk-corpus.md)). |
 | الدرر السنية — واجهة الموسوعة الحديثية الرسمية | واجهة منشورة لأصحاب المواقع؛ تُعرض النتائج منسوبة ومع رابط. طلبات محدودة السرعة وتعرّف نفسها. التراجم لم تُجلب. |
 | مكتبات الواجهة (Cytoscape.js، dagre، cytoscape-dagre، Tabler Icons) | MIT |
 | الخطوط (Amiri، Readex Pro، Jost) | SIL Open Font License 1.1 |
