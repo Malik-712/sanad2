@@ -1,3 +1,6 @@
+> ⚠️ **مشروع سابق (Prior project).** تم إعادة بناء سند من الصفر خلال أيام التحدي (4–6 أكتوبر 2026) في: https://github.com/Malik-712/sanad
+> Prior project. Sanad was rebuilt from scratch during the challenge days (4–6 Oct 2026) at github.com/Malik-712/sanad.
+
 # سند — لكل حديث إسناد
 
 > **Sanad — Every hadith has its isnad (لكل حديث إسناد).**
